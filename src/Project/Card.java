@@ -1,6 +1,8 @@
-package Project;
+package project;
 
-public abstract class Card 
+import java.util.Arrays;
+
+public abstract class Card
 {
    private String suit;
    private int value;

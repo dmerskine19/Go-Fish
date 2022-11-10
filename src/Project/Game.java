@@ -1,14 +1,17 @@
-package Project;
+
+package project;
 
 public abstract class Game {
-    public Game(){
+    /**Calls the main game function.**/
+    public Game() {
     }
 
-    public void setPlayers(){
+    /**Function for when multiple player are together.**/
+    public void setPlayers() {
     }
-
+    /**Function to call the main play function from startGame.**/
     public abstract void play();
 
+    /**Function to call the main declareWinner function from startGame.**/
     public abstract void declareWinner();
-    
 }

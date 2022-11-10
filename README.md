@@ -1,2 +1,2 @@
 # Go Fish
- Project: Go Fish Card Game
+ project: Go Fish Card Game

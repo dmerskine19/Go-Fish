@@ -1,4 +1,4 @@
-package Project;
+package project;
 
 import java.util.ArrayList;
 
@@ -6,8 +6,8 @@ import java.util.ArrayList;
 public class SetOfCards {
 
     private int setCount;
-    
-     public SetOfCards() {
+
+    public SetOfCards() {
         this.setCount = 0;
     }
 

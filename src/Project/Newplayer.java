@@ -1,9 +1,11 @@
-package Project;
+package project;
 
-public class NewPlayer extends Player{
-	public NewPlayer(String name){
-		super(name);
-		Player.setPlayerID(name);
-
-	}
+public class NewPlayer extends Player {
+/**Sets New Players name, creating an ID.
+* @param name - User specified name
+**/
+public NewPlayer(final String name) {
+super(name);
+Player.setPlayerID(name);
+}
 }
