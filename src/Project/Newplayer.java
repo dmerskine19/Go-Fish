@@ -1,12 +1,9 @@
-public class Newplayer;{
-	private String Name;
-	public String getName();
-	{
-	return Name;
+package Project;
+
+public class NewPlayer extends Player{
+	public NewPlayer(String name){
+		super(name);
+		Player.setPlayerID(name);
+
 	}
-	public void setName(String Name);
-	{
-	this.Name= Name;
-}
-	
 }

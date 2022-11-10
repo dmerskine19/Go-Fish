@@ -1,33 +1,25 @@
-package project;
+package Project;
 import java.util.ArrayList;
-import java.util.Collections;
-
 
 public class NewGroupOfCards extends GroupOfCards{
-
-    private ArrayList <Card> cardsnew = new ArrayList <Card>();
-    private int size;//the size of the grouping
-    
-    
-    public NewGroupOfCards(int givenSize)
+    private final ArrayList <Card> cardsNew = new ArrayList<>();
+    public NewGroupOfCards(int size)
     {
-        super(givenSize);
+        super(size);
     }
     public void shuffle(){
-        super.setCards(cardsnew);
+        super.setCards(cardsNew);
         super.shuffle();
     }
     
 
     public ArrayList <Card> generateCards(){
-               
         for(CardGoFish.Suits s: CardGoFish.Suits.values()){
-                 
             for(CardGoFish.Values v : CardGoFish.Values.values()){
             CardGoFish card = new CardGoFish(s,v);
-                cardsnew.add(card);
+                cardsNew.add(card);
             }
         }
-        return cardsnew;
+        return cardsNew;
     }
 }
