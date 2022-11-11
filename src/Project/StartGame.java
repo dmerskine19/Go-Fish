@@ -3,14 +3,14 @@ package project;
 
 import java.util.Scanner;
 
-public class StartGame {
+class StartGame {
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        String GoFishSystem = "Go Fish System";
+        String goFishSystem = "Go Fish System";
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("Welcome! This is the " + GoFishSystem + " :)");
+        System.out.println("Welcome! This is the " + goFishSystem + " :)");
         System.out.println("This System currently only supports single player vs an AI.");
         System.out.println("Please enter 2, when asked for the number of players.");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------");
