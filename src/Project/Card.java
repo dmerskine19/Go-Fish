@@ -14,7 +14,7 @@ public abstract class Card
 
     public void setSuit(String suit) {
         
-       // CardGoFish card = new CardGoFish();
+        CardGoFish card = new CardGoFish();
         this.suit = suit;
         // System.out.println(this.suit);
     }

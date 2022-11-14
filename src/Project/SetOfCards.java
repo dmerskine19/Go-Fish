@@ -37,7 +37,6 @@ public class SetOfCards {
 
                 if (counter == sizeOfSet) {
                     setPresent = true;
-                    System.out.println("Set of 4 found");
                     break;
                 }
             }
@@ -65,7 +64,6 @@ public class SetOfCards {
 
                 if (counter == sizeOfSet) {
                     foundPos = j;
-                    System.out.println("Set of 4 found");
                     break;
                 }
             }

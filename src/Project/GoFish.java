@@ -1,5 +1,6 @@
 package project;
 
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -63,8 +64,7 @@ public class GoFish extends Game {
                     System.out.println("Starting Game...");
                     String currentPlayer = comp;
                     //printHand("Computer's", hand1);
-                    printHand("Your Hand: ", hand2);
-                    System.out.println("-------------------------------------");
+                    displayHand();
                     System.out.println(" ");
 
                     while (!gameEnd) {
@@ -73,20 +73,26 @@ public class GoFish extends Game {
                                 gameEnd = true;
                                 break;
                             }
-                            Card rdmSelec = GoFishHand.rdmCardFromHand(hand1);
-                            ArrayList<Card> hand1M = askCard(rdmSelec.getValue(), hand2);
+                            Card rdmSelect = GoFishHand.rdmCardFromHand(hand1);
+                            ArrayList<Card> hand1M = askCard(rdmSelect.getValue(), hand2);
                             System.out.println(" ");
-                            System.out.println("Opponent asked for " + rdmSelec.getValue());
-
+                            System.out.println("Opponent asked for a " + rdmSelect.getValue());
                             if (hand1M.size() > 0) {
-                                hand2.removeAll(hand1M);
-                                hand1.addAll(hand1M);
-                                System.out.println("The Ai Opponent took the " + rdmSelec.getValue() + " of " + rdmSelec.getSuit() + " From your hand.");
+                                System.out.print("The Ai Opponent took ");
+                                for(int counter = 1; counter <= hand1M.size(); counter++){
+                                    System.out.print(counter + " - ");
+                                }
+                                System.out.print(rdmSelect.getValue());
+                                System.out.print(" From your hand.");
                                 System.out.println(" ");
+                                System.out.println(" ");
+                                hand1.addAll(hand1M);
+                                hand2.removeAll(hand1M);
+
 
                                 if (SetOfCards.checkIfSetInHand(hand1)) {
                                     currentPlayer = comp;
-                                    System.out.println("Ai Opponent Played a Set of " + rdmSelec);
+                                    System.out.println("Ai Opponent Played a Set of " + rdmSelect);
 
                                     ArrayList<Card> set1;
                                     set1 = SetOfCards.findSetInHand(hand1);
@@ -96,26 +102,21 @@ public class GoFish extends Game {
                                     hand1.removeAll(set1);
 
                                     //printHand("Computer's", hand1);
-                                    System.out.println("--------------------------------------");
-                                    printHand("Your Hand: ", hand2);
-                                    System.out.println("--------------------------------------");
+                                    displayHand();
                                     System.out.println(" ");
                                     System.out.println(" ");
                                 }
                                 else {
-                                    System.out.println("--------------------------------------");
                                     currentPlayer = Player.getPlayerID();
-                                    System.out.println("Current Player " + currentPlayer);
+                                    displayCurrentPlayer(currentPlayer);
 
                                     //printHand("Computer's", hand1);
-                                    System.out.println("--------------------------------------");
-                                    printHand("Your Hand: ", hand2);
-                                    System.out.println("--------------------------------------");
+                                    displayHand();
                                     break;
                                 }
                             }
                             else {
-                                System.out.println("You don't have a " + rdmSelec.getValue() + " of " + rdmSelec.getSuit() + " in your hand...");
+                                System.out.println("You don't have a " + rdmSelect.getValue() + " in your hand...");
                                 System.out.println("GO FISH!");
                                 System.out.println(" ");
                                 System.out.println("~~~~~A Card Has Been Added to your Opponents Hand~~~~~");
@@ -130,13 +131,11 @@ public class GoFish extends Game {
                                 hand1.add(rdmSelection2);
 
                                 //printHand("Computer's", hand1);
-                                System.out.println("--------------------------------------");
-                                printHand("Your Hand:", hand2);
-                                System.out.println("--------------------------------------");
+                                displayHand();
 
                                 if (SetOfCards.checkIfSetInHand(hand1)) {
                                     currentPlayer = "player1";
-                                    System.out.println("Current Player " + currentPlayer);
+                                    displayCurrentPlayer(currentPlayer);
 
                                     ArrayList<Card> book1;
                                     book1 = SetOfCards.findSetInHand(hand1);
@@ -145,15 +144,11 @@ public class GoFish extends Game {
                                     hand1.removeAll(book1);
 
                                     //printHand("Computer's", hand1);
-                                    System.out.println("--------------------------------------");
-                                    printHand("Your Hand:", hand2);
-                                    System.out.println("--------------------------------------");
+                                    displayHand();
 
                                 } else {
                                     currentPlayer = Player.getPlayerID();
-                                    System.out.println("========================================");
-                                    System.out.println("Current Player " + currentPlayer);
-                                    System.out.println("========================================");
+                                    displayCurrentPlayer(currentPlayer);
                                     break;
                                 }
                             }
@@ -164,6 +159,8 @@ public class GoFish extends Game {
                                 gameEnd = true;
                                 break;
                             }
+                            System.out.println(" ");
+                            System.out.println(" ");
                             System.out.println("Please request a value you wish to take from the Ai Opponent");
                             System.out.println("You should have at least one in your hand (1-13)");
                             Scanner scanner = new Scanner(System.in);
@@ -171,14 +168,16 @@ public class GoFish extends Game {
                             ArrayList<Card> hand2Match = askCard(val, hand1);
 
                             if (hand2Match.size() > 0) {
-                                hand1.removeAll(hand2Match);
                                 hand2.addAll(hand2Match);
+                                hand1.removeAll(hand2Match);
                                 System.out.println("The Ai Opponent had a card with the value " + val + "!");
                                 System.out.println("It was added to your hand");
                                 System.out.println(" ");
                                 if (SetOfCards.checkIfSetInHand(hand2)) {
                                     currentPlayer = Player.getPlayerID();
                                     System.out.println("This gives " + currentPlayer + " a set of 4!");
+                                    System.out.println(" ");
+                                    System.out.println(" ");
 
                                     ArrayList<Card> set2;
                                     set2 = SetOfCards.findSetInHand(hand2);
@@ -189,9 +188,7 @@ public class GoFish extends Game {
 
                                 } else {
                                     currentPlayer = comp;
-                                    System.out.println("========================================");
-                                    System.out.println("Current Player " + currentPlayer);
-                                    System.out.println("========================================");
+                                    displayCurrentPlayer(currentPlayer);
 
                                 }
                                 break;
@@ -214,48 +211,41 @@ public class GoFish extends Game {
                                 drawnCard();
 
                                 if (SetOfCards.checkIfSetInHand(hand2)) {
-                                    currentPlayer = Player.getPlayerID();
-                                    System.out.println("========================================");
-                                    System.out.println("Current Player " + currentPlayer);
-                                    System.out.println("========================================");
 
                                     ArrayList<Card> set2;
                                     set2 = SetOfCards.findSetInHand(hand2);
-
+                                    currentPlayer = Player.getPlayerID();
+                                    System.out.println("This gives " + currentPlayer + " a point!");
+                                    System.out.println(" ");
+                                    System.out.println(" ");
                                     setPlayer2.addSetCount();
                                     hand2.removeAll(set2);
 
-                                    //printHand("Computer's", hand1);
-                                    printHand("Your Hand:", hand2);
-                                    System.out.println("-----------------------------------------");
                                 }
                                 else {
                                     currentPlayer = comp;
-                                    System.out.println("-----------------------------------------");
-                                    System.out.println("Current Player " + currentPlayer);
-                                    System.out.println("-----------------------------------------");
+                                    displayCurrentPlayer(currentPlayer);
                                     break;
                                 }
                             }
                         }
                         //printHand("Computer's", hand1);
-                        printHand("Your Hand:", hand2);
-                        System.out.println("-----------------------------------------------------");
+                        displayHand();
                     }
                     break;
                 }
         }
 
     private void drawnCard() {
-        Card rdmSelection31 = GoFishHand.rdmCardFromHand(fullHand52);
-        fullHand52.remove(rdmSelection31);
-        hand2.add(rdmSelection31);
-        System.out.println("~~~~~The " + rdmSelection31.getValue() + " of " + rdmSelection31.getSuit() + " was added to your hand~~~~~");
+        Card rdmSelection = GoFishHand.rdmCardFromHand(fullHand52);
+        fullHand52.remove(rdmSelection);
+        hand2.add(rdmSelection);
+        System.out.println("~~~~~The " + rdmSelection.getValue() + " of " + rdmSelection.getSuit() + " was added to your hand~~~~~");
         System.out.println(" ");
     }
 
-    private void printHand(final String player, final ArrayList<Card> currentHand) {
-        System.out.println(player + " (" + currentHand.size() + ")");
+    private void printHand(final ArrayList<Card> currentHand) {
+        System.out.println("Your Hand:" + " (" + currentHand.size() + ")");
         for (Card card : currentHand) {
             System.out.print(card.getSuit() + " " + card.getValue() + " | ");
         }
@@ -269,7 +259,6 @@ public class GoFish extends Game {
     public ArrayList<Card> askCard(final int val, final ArrayList<Card> opponentPlayerHand) {
         ArrayList<Card> matchingCards = new ArrayList<>();
         System.out.println(" ");
-        System.out.println("~~~~~You asked for a " + val + "~~~~~");
         System.out.println(" ");
 
 
@@ -280,6 +269,19 @@ public class GoFish extends Game {
             }
         }
         return matchingCards;
+    }
+    /** Formatting hand for console display. **/
+    public void displayHand() {
+        System.out.println("------------------------------------------------------------------------------------------------------------------");
+        printHand(hand2);
+        System.out.println("------------------------------------------------------------------------------------------------------------------");
+    }
+
+    /** Formatting current player for console display. **/
+    public void displayCurrentPlayer(String currentPlayer) {
+        System.out.println("==================================================================================================================");
+        System.out.println("Current Player " + currentPlayer);
+        System.out.println("==================================================================================================================");
     }
 
     /** Logic for declaring a winner of the game. **/

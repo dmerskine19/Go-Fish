@@ -6,6 +6,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 
 public class CardGoFish extends Card {
+    public CardGoFish() {
+
+    }
+
     public enum Values {
         /** Value 13. **/
         King,
@@ -38,10 +42,10 @@ public class CardGoFish extends Card {
     public enum Suits {
         /** The suit, Clubs in the deck. **/
         Clubs,
-        /** The suit, Spades in the deck. **/
-        Spades,
         /** The suit, Diamonds in the deck. **/
         Diamonds,
+        /** The suit, Spades in the deck. **/
+        Spades,
         /** The suit, Hearts in the deck. **/
         Hearts,
     }
