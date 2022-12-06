@@ -1,0 +1,214 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > CardGoFish</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">project</a>
+</div>
+
+<h1>Coverage Summary for Class: CardGoFish (project)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CardGoFish</td>
+<td class="coverageStat">
+  <span class="percent">
+    66.7%
+  </span>
+  <span class="absValue">
+    (2/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (4/5)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">CardGoFish$Suits</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/5)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">CardGoFish$Values</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (14/14)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    85.7%
+  </span>
+  <span class="absValue">
+    (6/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    95.8%
+  </span>
+  <span class="absValue">
+    (23/24)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;
+&nbsp;package project;
+&nbsp;
+&nbsp;import org.jetbrains.annotations.NotNull;
+&nbsp;
+&nbsp;import java.util.Arrays;
+&nbsp;
+&nbsp;public class CardGoFish extends Card {
+<b class="fc">&nbsp;    public CardGoFish() {</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public enum Values {</b>
+&nbsp;        /** Value 13. **/
+<b class="fc">&nbsp;        King,</b>
+&nbsp;        /** Value 12. **/
+<b class="fc">&nbsp;        Queen,</b>
+&nbsp;        /** Value 11. **/
+<b class="fc">&nbsp;        Jack,</b>
+&nbsp;        /** Value 10. **/
+<b class="fc">&nbsp;        Ten,</b>
+&nbsp;        /** Value 9. **/
+<b class="fc">&nbsp;        Nine,</b>
+&nbsp;        /** Value 8. **/
+<b class="fc">&nbsp;        Eight,</b>
+&nbsp;        /** Value 7. **/
+<b class="fc">&nbsp;        Seven,</b>
+&nbsp;        /** Value 6. **/
+<b class="fc">&nbsp;        Six,</b>
+&nbsp;        /** Value 5. **/
+<b class="fc">&nbsp;        Five,</b>
+&nbsp;        /** Value 4. **/
+<b class="fc">&nbsp;        Four,</b>
+&nbsp;        /** Value 3. **/
+<b class="fc">&nbsp;        Three,</b>
+&nbsp;        /** Value 2. **/
+<b class="fc">&nbsp;        Two,</b>
+&nbsp;        /** Value 1. **/
+<b class="fc">&nbsp;        Ace,</b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public enum Suits {</b>
+&nbsp;        /** The suit, Clubs in the deck. **/
+<b class="fc">&nbsp;        Clubs,</b>
+&nbsp;        /** The suit, Diamonds in the deck. **/
+<b class="fc">&nbsp;        Diamonds,</b>
+&nbsp;        /** The suit, Spades in the deck. **/
+<b class="fc">&nbsp;        Spades,</b>
+&nbsp;        /** The suit, Hearts in the deck. **/
+<b class="fc">&nbsp;        Hearts,</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /** @return the suits as a string. **/
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        return Arrays.toString(Suits.values());</b>
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     * A constructor to generate cards with a suits.
+&nbsp;     * @param s - Suit
+&nbsp;     * @param v - Value
+&nbsp;     **/
+<b class="fc">&nbsp;    public CardGoFish(final @NotNull Suits s, final @NotNull Values v) {</b>
+<b class="fc">&nbsp;        super.setSuit(s.toString());</b>
+<b class="fc">&nbsp;        super.setValue(v.ordinal() + 1);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-06 12:32</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,403 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > GoFish</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">project</a>
+</div>
+
+<h1>Coverage Summary for Class: GoFish (project)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">GoFish</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    54.5%
+  </span>
+  <span class="absValue">
+    (6/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    15.6%
+  </span>
+  <span class="absValue">
+    (27/173)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package project;
+&nbsp;
+&nbsp;import java.util.Arrays;
+&nbsp;import java.util.Scanner;
+&nbsp;import java.util.ArrayList;
+&nbsp;
+&nbsp;public class GoFish extends Game {
+&nbsp;    /**The sets of 4 cards player1 makes during the game.**/
+<b class="fc">&nbsp;    SetOfCards setPlayer1 = new SetOfCards();</b>
+&nbsp;    /**The sets of 4 cards player2 makes during the game.**/
+<b class="fc">&nbsp;    SetOfCards setPlayer2 = new SetOfCards();</b>
+&nbsp;    /**The Array of cards player1 has in their hand.**/
+<b class="fc">&nbsp;    private ArrayList&lt;Card&gt; hand1 = null;</b>
+&nbsp;    /**The Array of cards player1 has in their hand.**/
+<b class="fc">&nbsp;    private ArrayList&lt;Card&gt; hand2 = null;</b>
+&nbsp;    /**The Array of cards in the deck.**/
+<b class="fc">&nbsp;    ArrayList&lt;Card&gt; fullHand52 = null;</b>
+&nbsp;    /**A boolean that checks when the game is over.**/
+<b class="fc">&nbsp;    private boolean gameEnd = false;</b>
+&nbsp;    /**A user inputted number, that is the amount of players.**/
+&nbsp;    private int numPlayer;
+&nbsp;
+&nbsp;    /**First call to the GoFish class from StartGame.**/
+&nbsp;    public GoFish() {
+<b class="fc">&nbsp;        super();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**Adds players to the array containing the current players.**/
+&nbsp;    public void addPlayers() {
+<b class="fc">&nbsp;        setPlayers();</b>
+&nbsp;    }
+&nbsp;    /**Setter for the user inputted number of player.
+&nbsp;     * @param numPlayer - user inputted value for the amount of players
+&nbsp;     **/
+&nbsp;    public void setNumPlayer(final int numPlayer) {
+<b class="fc">&nbsp;        this.numPlayer = numPlayer;</b>
+&nbsp;    }
+&nbsp;    /**Creates each player&#39;s starting hand from the deck of 52 cards.**/
+&nbsp;    public void createHands() {
+<b class="fc">&nbsp;        final int deckSize = 52; //Total number of cards in a deck</b>
+<b class="fc">&nbsp;        NewGroupOfCards newDeck = new NewGroupOfCards(deckSize);</b>
+<b class="fc">&nbsp;        newDeck.shuffle();</b>
+<b class="fc">&nbsp;        fullHand52 = newDeck.generateCards();</b>
+<b class="fc">&nbsp;        final int startingSizeofHand = 7; //number of cards in a hand at start.</b>
+<b class="fc">&nbsp;        GoFishHand handPlayer1 = new GoFishHand(startingSizeofHand);</b>
+<b class="fc">&nbsp;        hand1 = handPlayer1.generateHand(fullHand52);</b>
+<b class="fc">&nbsp;        fullHand52.removeAll(hand1);</b>
+<b class="fc">&nbsp;        GoFishHand handPlayer2 = new GoFishHand(startingSizeofHand);</b>
+<b class="fc">&nbsp;        hand2 = handPlayer2.generateHand(fullHand52);</b>
+<b class="fc">&nbsp;        fullHand52.removeAll(hand2);</b>
+&nbsp;    }
+&nbsp;        /**Main play method for the game.**/
+&nbsp;        public void play() {
+<b class="fc">&nbsp;            String comp = &quot;Ai Opponent&quot;;</b>
+<b class="fc">&nbsp;            switch (numPlayer) {</b>
+&nbsp;                case 1:
+<b class="nc">&nbsp;                    System.out.println(&quot;-------------------------------------&quot;);</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;Go Fish Requires 2 or more players.&quot;);</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;The game supports, 1 player vs an AI.&quot;);</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;Enter 2 for the number of players.&quot;);</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;-------------------------------------&quot;);</b>
+&nbsp;
+&nbsp;                case 2:
+<b class="nc">&nbsp;                    System.out.println(&quot;Starting Game...&quot;);</b>
+<b class="nc">&nbsp;                    String currentPlayer = comp;</b>
+&nbsp;                    //printHand(&quot;Computer&#39;s&quot;, hand1);
+<b class="nc">&nbsp;                    displayHand();</b>
+<b class="nc">&nbsp;                    System.out.println(&quot; &quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;                    while (!gameEnd) {</b>
+<b class="nc">&nbsp;                        while (currentPlayer.equals(comp)) {</b>
+<b class="nc">&nbsp;                            if (hand1.size() == 0) {</b>
+<b class="nc">&nbsp;                                gameEnd = true;</b>
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;                            }
+<b class="nc">&nbsp;                            Card rdmSelect = GoFishHand.rdmCardFromHand(hand1);</b>
+<b class="nc">&nbsp;                            ArrayList&lt;Card&gt; hand1M = askCard(rdmSelect.getValue(), hand2);</b>
+<b class="nc">&nbsp;                            System.out.println(&quot; &quot;);</b>
+<b class="nc">&nbsp;                            System.out.println(&quot;Opponent asked for a &quot; + rdmSelect.getValue());</b>
+<b class="nc">&nbsp;                            if (hand1M.size() &gt; 0) {</b>
+<b class="nc">&nbsp;                                System.out.print(&quot;The Ai Opponent took &quot;);</b>
+<b class="nc">&nbsp;                                for(int counter = 1; counter &lt;= hand1M.size(); counter++){</b>
+<b class="nc">&nbsp;                                    System.out.print(counter + &quot; - &quot;);</b>
+&nbsp;                                }
+<b class="nc">&nbsp;                                System.out.print(rdmSelect.getValue());</b>
+<b class="nc">&nbsp;                                System.out.print(&quot; From your hand.&quot;);</b>
+<b class="nc">&nbsp;                                System.out.println(&quot; &quot;);</b>
+<b class="nc">&nbsp;                                System.out.println(&quot; &quot;);</b>
+<b class="nc">&nbsp;                                hand1.addAll(hand1M);</b>
+<b class="nc">&nbsp;                                hand2.removeAll(hand1M);</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;                                if (SetOfCards.checkIfSetInHand(hand1)) {</b>
+<b class="nc">&nbsp;                                    currentPlayer = comp;</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;Ai Opponent Played a Set of &quot; + rdmSelect);</b>
+&nbsp;
+&nbsp;                                    ArrayList&lt;Card&gt; set1;
+<b class="nc">&nbsp;                                    set1 = SetOfCards.findSetInHand(hand1);</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;                                    setPlayer1.addSetCount();</b>
+<b class="nc">&nbsp;                                    hand1.removeAll(set1);</b>
+&nbsp;
+&nbsp;                                    //printHand(&quot;Computer&#39;s&quot;, hand1);
+<b class="nc">&nbsp;                                    displayHand();</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot; &quot;);</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot; &quot;);</b>
+<b class="nc">&nbsp;                                }</b>
+&nbsp;                                else {
+<b class="nc">&nbsp;                                    currentPlayer = Player.getPlayerID();</b>
+<b class="nc">&nbsp;                                    displayCurrentPlayer(currentPlayer);</b>
+&nbsp;
+&nbsp;                                    //printHand(&quot;Computer&#39;s&quot;, hand1);
+<b class="nc">&nbsp;                                    displayHand();</b>
+<b class="nc">&nbsp;                                    break;</b>
+&nbsp;                                }
+&nbsp;                            }
+&nbsp;                            else {
+<b class="nc">&nbsp;                                System.out.println(&quot;You don&#39;t have a &quot; + rdmSelect.getValue() + &quot; in your hand...&quot;);</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;GO FISH!&quot;);</b>
+<b class="nc">&nbsp;                                System.out.println(&quot; &quot;);</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;~~~~~A Card Has Been Added to your Opponents Hand~~~~~&quot;);</b>
+<b class="nc">&nbsp;                                System.out.println(&quot; &quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;                                if (fullHand52.size() == 0) {</b>
+<b class="nc">&nbsp;                                    gameEnd = true;</b>
+<b class="nc">&nbsp;                                    break;</b>
+&nbsp;                                }
+<b class="nc">&nbsp;                                Card rdmSelection2 = GoFishHand.rdmCardFromHand(fullHand52);</b>
+<b class="nc">&nbsp;                                fullHand52.remove(rdmSelection2);</b>
+<b class="nc">&nbsp;                                hand1.add(rdmSelection2);</b>
+&nbsp;
+&nbsp;                                //printHand(&quot;Computer&#39;s&quot;, hand1);
+<b class="nc">&nbsp;                                displayHand();</b>
+&nbsp;
+<b class="nc">&nbsp;                                if (SetOfCards.checkIfSetInHand(hand1)) {</b>
+<b class="nc">&nbsp;                                    currentPlayer = &quot;player1&quot;;</b>
+<b class="nc">&nbsp;                                    displayCurrentPlayer(currentPlayer);</b>
+&nbsp;
+&nbsp;                                    ArrayList&lt;Card&gt; book1;
+<b class="nc">&nbsp;                                    book1 = SetOfCards.findSetInHand(hand1);</b>
+&nbsp;
+<b class="nc">&nbsp;                                    setPlayer1.addSetCount();</b>
+<b class="nc">&nbsp;                                    hand1.removeAll(book1);</b>
+&nbsp;
+&nbsp;                                    //printHand(&quot;Computer&#39;s&quot;, hand1);
+<b class="nc">&nbsp;                                    displayHand();</b>
+&nbsp;
+<b class="nc">&nbsp;                                } else {</b>
+<b class="nc">&nbsp;                                    currentPlayer = Player.getPlayerID();</b>
+<b class="nc">&nbsp;                                    displayCurrentPlayer(currentPlayer);</b>
+<b class="nc">&nbsp;                                    break;</b>
+&nbsp;                                }
+&nbsp;                            }
+<b class="nc">&nbsp;                        }</b>
+&nbsp;
+<b class="nc">&nbsp;                        while (currentPlayer.equalsIgnoreCase(Player.getPlayerID())) {</b>
+<b class="nc">&nbsp;                            if (hand2.size() == 0) {</b>
+<b class="nc">&nbsp;                                gameEnd = true;</b>
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;                            }
+<b class="nc">&nbsp;                            System.out.println(&quot; &quot;);</b>
+<b class="nc">&nbsp;                            System.out.println(&quot; &quot;);</b>
+<b class="nc">&nbsp;                            System.out.println(&quot;Please request a value you wish to take from the Ai Opponent&quot;);</b>
+<b class="nc">&nbsp;                            System.out.println(&quot;You should have at least one in your hand (1-13)&quot;);</b>
+<b class="nc">&nbsp;                            Scanner scanner = new Scanner(System.in);</b>
+<b class="nc">&nbsp;                            int val = scanner.nextInt();</b>
+<b class="nc">&nbsp;                            ArrayList&lt;Card&gt; hand2Match = askCard(val, hand1);</b>
+&nbsp;
+<b class="nc">&nbsp;                            if (hand2Match.size() &gt; 0) {</b>
+<b class="nc">&nbsp;                                hand2.addAll(hand2Match);</b>
+<b class="nc">&nbsp;                                hand1.removeAll(hand2Match);</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;The Ai Opponent had a card with the value &quot; + val + &quot;!&quot;);</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;It was added to your hand&quot;);</b>
+<b class="nc">&nbsp;                                System.out.println(&quot; &quot;);</b>
+<b class="nc">&nbsp;                                if (SetOfCards.checkIfSetInHand(hand2)) {</b>
+<b class="nc">&nbsp;                                    currentPlayer = Player.getPlayerID();</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;This gives &quot; + currentPlayer + &quot; a set of 4!&quot;);</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot; &quot;);</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot; &quot;);</b>
+&nbsp;
+&nbsp;                                    ArrayList&lt;Card&gt; set2;
+<b class="nc">&nbsp;                                    set2 = SetOfCards.findSetInHand(hand2);</b>
+&nbsp;
+<b class="nc">&nbsp;                                    setPlayer2.addSetCount();</b>
+<b class="nc">&nbsp;                                    hand2.removeAll(set2);</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;                                } else {</b>
+<b class="nc">&nbsp;                                    currentPlayer = comp;</b>
+<b class="nc">&nbsp;                                    displayCurrentPlayer(currentPlayer);</b>
+&nbsp;
+&nbsp;                                }
+<b class="nc">&nbsp;                                break;</b>
+&nbsp;                            }
+&nbsp;                            else {
+<b class="nc">&nbsp;                                System.out.println(&quot;Go Fish!&quot;);</b>
+<b class="nc">&nbsp;                                System.out.println(&quot; &quot;);</b>
+<b class="nc">&nbsp;                                System.out.println(&quot;Type d to draw a card&quot;);</b>
+<b class="nc">&nbsp;                                String ans = scanner.next();</b>
+<b class="nc">&nbsp;                                while (ans.charAt(0) != &#39;d&#39;) {</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;Type d to draw a card&quot;);</b>
+&nbsp;                                }
+<b class="nc">&nbsp;                                System.out.println(&quot; &quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;                                if (fullHand52.size() == 0) {</b>
+<b class="nc">&nbsp;                                    gameEnd = true;</b>
+<b class="nc">&nbsp;                                    break;</b>
+&nbsp;                                }
+&nbsp;
+<b class="nc">&nbsp;                                drawnCard();</b>
+&nbsp;
+<b class="nc">&nbsp;                                if (SetOfCards.checkIfSetInHand(hand2)) {</b>
+&nbsp;
+&nbsp;                                    ArrayList&lt;Card&gt; set2;
+<b class="nc">&nbsp;                                    set2 = SetOfCards.findSetInHand(hand2);</b>
+<b class="nc">&nbsp;                                    currentPlayer = Player.getPlayerID();</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot;This gives &quot; + currentPlayer + &quot; a point!&quot;);</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot; &quot;);</b>
+<b class="nc">&nbsp;                                    System.out.println(&quot; &quot;);</b>
+<b class="nc">&nbsp;                                    setPlayer2.addSetCount();</b>
+<b class="nc">&nbsp;                                    hand2.removeAll(set2);</b>
+&nbsp;
+<b class="nc">&nbsp;                                }</b>
+&nbsp;                                else {
+<b class="nc">&nbsp;                                    currentPlayer = comp;</b>
+<b class="nc">&nbsp;                                    displayCurrentPlayer(currentPlayer);</b>
+<b class="nc">&nbsp;                                    break;</b>
+&nbsp;                                }
+&nbsp;                            }
+<b class="nc">&nbsp;                        }</b>
+&nbsp;                        //printHand(&quot;Computer&#39;s&quot;, hand1);
+<b class="nc">&nbsp;                        displayHand();</b>
+&nbsp;                    }
+&nbsp;                    break;
+&nbsp;                }
+&nbsp;        }
+&nbsp;
+&nbsp;    private void drawnCard() {
+<b class="nc">&nbsp;        Card rdmSelection = GoFishHand.rdmCardFromHand(fullHand52);</b>
+<b class="nc">&nbsp;        fullHand52.remove(rdmSelection);</b>
+<b class="nc">&nbsp;        hand2.add(rdmSelection);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;~~~~~The &quot; + rdmSelection.getValue() + &quot; of &quot; + rdmSelection.getSuit() + &quot; was added to your hand~~~~~&quot;);</b>
+<b class="nc">&nbsp;        System.out.println(&quot; &quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void printHand(final ArrayList&lt;Card&gt; currentHand) {
+<b class="nc">&nbsp;        System.out.println(&quot;Your Hand:&quot; + &quot; (&quot; + currentHand.size() + &quot;)&quot;);</b>
+<b class="nc">&nbsp;        for (Card card : currentHand) {</b>
+<b class="nc">&nbsp;            System.out.print(card.getSuit() + &quot; &quot; + card.getValue() + &quot; | &quot;);</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        System.out.println();</b>
+&nbsp;    }
+&nbsp;    /** Method that contains the logic for asking a player for a card.
+&nbsp;     * @return matchingCards - All cards that match the users defined value
+&nbsp;     * @param val - Defined value of card that is requested by the user
+&nbsp;     * @param opponentPlayerHand - Defined player that the user is requesting a card from
+&nbsp;     **/
+&nbsp;    public ArrayList&lt;Card&gt; askCard(final int val, final ArrayList&lt;Card&gt; opponentPlayerHand) {
+<b class="nc">&nbsp;        ArrayList&lt;Card&gt; matchingCards = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;        System.out.println(&quot; &quot;);</b>
+<b class="nc">&nbsp;        System.out.println(&quot; &quot;);</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        for (Card card : opponentPlayerHand) {</b>
+<b class="nc">&nbsp;            if (card.getValue() == val) {</b>
+&nbsp;
+<b class="nc">&nbsp;                matchingCards.add(card);</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return matchingCards;</b>
+&nbsp;    }
+&nbsp;    /** Formatting hand for console display. **/
+&nbsp;    public void displayHand() {
+<b class="nc">&nbsp;        System.out.println(&quot;------------------------------------------------------------------------------------------------------------------&quot;);</b>
+<b class="nc">&nbsp;        printHand(hand2);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;------------------------------------------------------------------------------------------------------------------&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /** Formatting current player for console display. **/
+&nbsp;    public void displayCurrentPlayer(String currentPlayer) {
+<b class="nc">&nbsp;        System.out.println(&quot;==================================================================================================================&quot;);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;Current Player &quot; + currentPlayer);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;==================================================================================================================&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /** Logic for declaring a winner of the game. **/
+&nbsp;    public void declareWinner() {
+<b class="fc">&nbsp;        if (setPlayer1.countSet() &gt; setPlayer2.countSet()) {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Player 1 is the winner !&quot;);</b>
+<b class="fc">&nbsp;        } else if (setPlayer2.countSet() &gt; setPlayer1.countSet()) {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;&quot; + Player.getPlayerID() + &quot; is the winner !&quot;);</b>
+&nbsp;        } else {
+<b class="fc">&nbsp;            System.out.println(&quot;TIE !&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        System.out.println(&quot;Player 1 - &quot; + setPlayer1.countSet() + &quot; sets&quot;);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;&quot; + Player.getPlayerID() + &quot; - &quot; + setPlayer2.countSet() + &quot; sets&quot;);</b>
+&nbsp;    }
+&nbsp;}
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-06 12:32</div>
+</div>
+</body>
+</html>
