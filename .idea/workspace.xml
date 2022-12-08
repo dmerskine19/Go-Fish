@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3dc63d7a-9b14-4aca-8930-b64e4cbcf0a7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Project/GameTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Project/NewplayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Project/NewplayerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Project/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Project/PlayerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project/StartGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/StartGame.java" afterDir="false" />
-    </list>
+    <list default="true" id="3dc63d7a-9b14-4aca-8930-b64e4cbcf0a7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
