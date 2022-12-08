@@ -19,7 +19,7 @@ public class SetOfCardsTest {
      * Test of addBookCount method, of class BookOfCards.
      */
     @Test
-    public void testAddBookCountGood() {
+    public void testAddSetCountGood() {
         System.out.println("addBookCount");
         SetOfCards instance = new SetOfCards();
         instance.addSetCount();
@@ -33,7 +33,7 @@ public class SetOfCardsTest {
      * Test of countBook method, of class BookOfCards.
      */
     @Test
-    public void testCountBookGood() {
+    public void testCountSetGood() {
         System.out.println("countBook");
         SetOfCards instance = new SetOfCards();
         int expResult = 0;
@@ -48,7 +48,7 @@ public class SetOfCardsTest {
      * Test of checkIfBookInHand method, of class BookOfCards.
      */
     @Test
-    public void testCheckIfBookInHandGood() {
+    public void testCheckIfSetInHandGood() {
         System.out.println("checkIfBookInHand");
 
         CardGoFish c1 = new CardGoFish(Suits.Hearts, Values.Two);
@@ -74,7 +74,7 @@ public class SetOfCardsTest {
     }
 
     @Test
-    public void testCheckIfBookInHandBad() {
+    public void testCheckIfSetInHandBad() {
         System.out.println("checkIfBookInHand");
 
         CardGoFish c1 = new CardGoFish(Suits.Hearts, Values.Two);

@@ -35,6 +35,7 @@ public class GoFish extends Game {
     public void setNumPlayer(final int numPlayer) {
         this.numPlayer = numPlayer;
     }
+
     /**Creates each player's starting hand from the deck of 52 cards.**/
     public void createHands() {
         final int deckSize = 52; //Total number of cards in a deck
@@ -49,8 +50,10 @@ public class GoFish extends Game {
         hand2 = handPlayer2.generateHand(fullHand52);
         fullHand52.removeAll(hand2);
     }
-        /**Main play method for the game.**/
-        public void play() {
+
+    /**Main play method for the game.**/
+    public void play() {
+            createHands();
             String comp = "Ai Opponent";
             switch (numPlayer) {
                 case 1:

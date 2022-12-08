@@ -15,9 +15,9 @@ class StartGame {
         System.out.println("Please enter 2, when asked for the number of players.");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------");
         GoFish game = new GoFish();
-        System.out.println("Enter the number of players");
-        int numPlayer = scanner.nextInt();
+        int numPlayer = 2;
         game.setNumPlayer(numPlayer);
+        System.out.println("Enter your name - ");
         String name = scanner.next();
         new NewPlayer(name);
         game.addPlayers();
