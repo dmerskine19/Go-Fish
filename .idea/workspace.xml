@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3dc63d7a-9b14-4aca-8930-b64e4cbcf0a7" name="Changes" comment="" />
+    <list default="true" id="3dc63d7a-9b14-4aca-8930-b64e4cbcf0a7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Go-Fish.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Go-Fish.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go-Fish/Project/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go-Fish/Project/Card.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go-Fish/Project/GoFish.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go-Fish/Project/GoFish.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go-Fish/Project/StartGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go-Fish/Project/StartGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Project/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Project/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Project/StartGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Project/StartGame.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,6 +21,7 @@
       <list>
         <option value="Class" />
         <option value="package-info" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -37,18 +47,32 @@
     &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dmers/Desktop&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dmers/Documents/GitHub/Go-Fish&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Dmers\Documents\GitHub\Go-Fish" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="project" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="StartGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="project.StartGame" />
       <module name="Go-Fish" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="project.*" />
+          <option name="PATTERN" value="project.Card" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>

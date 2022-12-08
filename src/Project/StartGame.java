@@ -18,9 +18,6 @@ class StartGame {
         System.out.println("Enter the number of players");
         int numPlayer = scanner.nextInt();
         game.setNumPlayer(numPlayer);
-        game.createHands();
-        System.out.println("Computer acts as Player 1");
-        System.out.println("Enter the name of Player 2 which is you");
         String name = scanner.next();
         new NewPlayer(name);
         game.addPlayers();
