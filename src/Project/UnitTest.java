@@ -1,13 +1,13 @@
 package project;
 
-import org.junit.*;
-
+import java.util.ArrayList;
 import java.util.Random;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
+import static project.SetOfCards.checkIfSetInHand;
 
-public class GameTest {
+public class UnitTest {
     Random rand = new Random();
     @org.junit.Test
     public void testPlayerStatic(){
@@ -46,5 +46,34 @@ public class GameTest {
     public void testNewPlayer(){
         NewPlayer a = new NewPlayer("OK");
         assertEquals("OK",Player.getPlayerID());
+    }
+
+    @org.junit.Test
+    public void testMaxCardsInHand(){
+        NewGroupOfCards newGrp = new NewGroupOfCards(52);
+        ArrayList<Card> currentHand = newGrp.generateCards();
+        int expResult = 52;
+        int result = currentHand.size();
+        assertEquals(expResult, result);
+    }
+
+    @org.junit.Test
+    public void testGame() throws Exception {
+
+        //Play a whole game with a smaller deck that only has 5 values. If code crashes, test fails.
+        ArrayList<Card> newGrp  = new ArrayList<Card>();
+        CardGoFish card1 = new CardGoFish(CardGoFish.Suits.Hearts, CardGoFish.Values.Ace);
+        CardGoFish card2 = new CardGoFish(CardGoFish.Suits.Diamonds, CardGoFish.Values.Ace);
+        CardGoFish card3 = new CardGoFish(CardGoFish.Suits.Spades, CardGoFish.Values.Ace);
+        CardGoFish card4 = new CardGoFish(CardGoFish.Suits.Clubs, CardGoFish.Values.Ace);
+        newGrp.add(card4);
+        newGrp.add(card3);
+        newGrp.add(card2);
+        newGrp.add(card1);
+        checkIfSetInHand(newGrp);
+        boolean expResult = true;
+        boolean result = checkIfSetInHand(newGrp);;
+        assertEquals(expResult, result);
+
     }
 }

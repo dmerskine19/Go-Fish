@@ -82,9 +82,11 @@ public class GoFish extends Game {
                             System.out.println("Opponent asked for a " + rdmSelect.getValue());
                             if (hand1M.size() > 0) {
                                 System.out.print("The Ai Opponent took ");
-                                for(int counter = 1; counter <= hand1M.size(); counter++){
-                                    System.out.print(counter + " - ");
+                                int counter = 1;
+                                if(counter <= hand1M.size()){
+                                    counter++;
                                 }
+                                System.out.print(counter + " - ");
                                 System.out.print(rdmSelect.getValue());
                                 System.out.print(" From your hand.");
                                 System.out.println(" ");

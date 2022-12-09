@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3dc63d7a-9b14-4aca-8930-b64e4cbcf0a7" name="Changes" comment="" />
+    <list default="true" id="3dc63d7a-9b14-4aca-8930-b64e4cbcf0a7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Project/UnitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go-Fish/Project/GoFish.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go-Fish/Project/GoFish.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Project/GameTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Project/GoFish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Project/GoFish.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,7 +66,7 @@
       <recent name="project" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.StartGame">
+  <component name="RunManager" selected="JUnit.UnitTest.testGame">
     <configuration name="StartGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="project.StartGame" />
       <module name="Go-Fish" />
@@ -74,7 +80,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UnitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Go-Fish" />
       <extension name="coverage">
         <pattern>
@@ -83,13 +89,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="project" />
-      <option name="MAIN_CLASS_NAME" value="project.GameTest" />
+      <option name="MAIN_CLASS_NAME" value="project.UnitTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GameTest.testPlayerStatic" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UnitTest.testGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Go-Fish" />
       <extension name="coverage">
         <pattern>
@@ -98,51 +104,52 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="project" />
-      <option name="MAIN_CLASS_NAME" value="project.GameTest" />
+      <option name="MAIN_CLASS_NAME" value="project.UnitTest" />
+      <option name="METHOD_NAME" value="testGame" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UnitTest.testMaxCardsInHand" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Go-Fish" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="project.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="project" />
+      <option name="MAIN_CLASS_NAME" value="project.UnitTest" />
+      <option name="METHOD_NAME" value="testMaxCardsInHand" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UnitTest.testPlayerStatic" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Go-Fish" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="project.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="project" />
+      <option name="MAIN_CLASS_NAME" value="project.UnitTest" />
       <option name="METHOD_NAME" value="testPlayerStatic" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NewplayerTest.TestNewplayer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Go-Fish" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="project.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="project" />
-      <option name="MAIN_CLASS_NAME" value="project.NewplayerTest" />
-      <option name="METHOD_NAME" value="TestNewplayer" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Go-Fish" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="project.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="project" />
-      <option name="MAIN_CLASS_NAME" value="project.PlayerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UnitTest.testGame" />
+        <item itemvalue="JUnit.UnitTest.testMaxCardsInHand" />
         <item itemvalue="Application.StartGame" />
-        <item itemvalue="JUnit.GameTest.testPlayerStatic" />
-        <item itemvalue="JUnit.GameTest" />
-        <item itemvalue="JUnit.NewplayerTest.TestNewplayer" />
-        <item itemvalue="JUnit.PlayerTest" />
+        <item itemvalue="JUnit.UnitTest.testPlayerStatic" />
+        <item itemvalue="JUnit.UnitTest" />
       </list>
     </recent_temporary>
   </component>
