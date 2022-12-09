@@ -58,7 +58,7 @@ public class UnitTest {
     }
 
     @org.junit.Test
-    public void testGame() throws Exception {
+    public void testGameSetCheck() throws Exception {
 
         //Play a whole game with a smaller deck that only has 5 values. If code crashes, test fails.
         ArrayList<Card> newGrp  = new ArrayList<Card>();
@@ -74,6 +74,10 @@ public class UnitTest {
         boolean expResult = true;
         boolean result = checkIfSetInHand(newGrp);;
         assertEquals(expResult, result);
+
+    }
+    @org.junit.Test
+    public void testEndGameSet() throws Exception {
 
     }
 }

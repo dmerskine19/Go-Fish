@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3dc63d7a-9b14-4aca-8930-b64e4cbcf0a7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Project/UnitTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go-Fish/Project/GoFish.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go-Fish/Project/GoFish.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Project/GameTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Project/GoFish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Project/GoFish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/UnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/UnitTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +63,7 @@
       <recent name="project" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UnitTest.testGame">
+  <component name="RunManager" selected="JUnit.UnitTest.testEndGameSet">
     <configuration name="StartGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="project.StartGame" />
       <module name="Go-Fish" />
@@ -80,7 +77,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UnitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UnitTest.testEndGameSet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Go-Fish" />
       <extension name="coverage">
         <pattern>
@@ -90,7 +87,8 @@
       </extension>
       <option name="PACKAGE_NAME" value="project" />
       <option name="MAIN_CLASS_NAME" value="project.UnitTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="testEndGameSet" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -145,11 +143,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UnitTest.testEndGameSet" />
+        <item itemvalue="Application.StartGame" />
         <item itemvalue="JUnit.UnitTest.testGame" />
         <item itemvalue="JUnit.UnitTest.testMaxCardsInHand" />
-        <item itemvalue="Application.StartGame" />
         <item itemvalue="JUnit.UnitTest.testPlayerStatic" />
-        <item itemvalue="JUnit.UnitTest" />
       </list>
     </recent_temporary>
   </component>
@@ -174,5 +172,15 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.util.InputMismatchException" package="java.util" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

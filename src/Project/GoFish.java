@@ -1,18 +1,18 @@
 package project;
 
-import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class GoFish extends Game {
     /**The sets of 4 cards player1 makes during the game.**/
-    SetOfCards setPlayer1 = new SetOfCards();
+    static SetOfCards setPlayer1 = new SetOfCards();
     /**The sets of 4 cards player2 makes during the game.**/
-    SetOfCards setPlayer2 = new SetOfCards();
+    static SetOfCards setPlayer2 = new SetOfCards();
     /**The Array of cards player1 has in their hand.**/
-    private ArrayList<Card> hand1 = null;
+    private static ArrayList<Card> hand1 = null;
     /**The Array of cards player1 has in their hand.**/
-    private ArrayList<Card> hand2 = null;
+    private static ArrayList<Card> hand2 = null;
     /**The Array of cards in the deck.**/
     ArrayList<Card> fullHand52 = null;
     /**A boolean that checks when the game is over.**/
@@ -50,6 +50,7 @@ public class GoFish extends Game {
         hand2 = handPlayer2.generateHand(fullHand52);
         fullHand52.removeAll(hand2);
     }
+
 
     /**Main play method for the game.**/
     public void play() {
@@ -97,14 +98,16 @@ public class GoFish extends Game {
 
                                 if (SetOfCards.checkIfSetInHand(hand1)) {
                                     currentPlayer = comp;
-                                    System.out.println("Ai Opponent Played a Set of " + rdmSelect);
+                                    System.out.println("Ai Opponent Played a Set");
 
                                     ArrayList<Card> set1;
                                     set1 = SetOfCards.findSetInHand(hand1);
 
+                                    System.out.println(" ");
+                                    System.out.println(set1);
+                                    System.out.println(" ");
 
-                                    setPlayer1.addSetCount();
-                                    hand1.removeAll(set1);
+                                    removeCards(set1, currentPlayer);
 
                                     //printHand("Computer's", hand1);
                                     displayHand();
@@ -169,7 +172,9 @@ public class GoFish extends Game {
                             System.out.println("Please request a value you wish to take from the Ai Opponent");
                             System.out.println("You should have at least one in your hand (1-13)");
                             Scanner scanner = new Scanner(System.in);
-                            int val = scanner.nextInt();
+                            int val = 0;
+                            val = checkValidInput(val);
+
                             ArrayList<Card> hand2Match = askCard(val, hand1);
 
                             if (hand2Match.size() > 0) {
@@ -197,8 +202,7 @@ public class GoFish extends Game {
 
                                 }
                                 break;
-                            }
-                            else {
+                            } else {
                                 System.out.println("Go Fish!");
                                 System.out.println(" ");
                                 System.out.println("Type d to draw a card");
@@ -226,8 +230,7 @@ public class GoFish extends Game {
                                     setPlayer2.addSetCount();
                                     hand2.removeAll(set2);
 
-                                }
-                                else {
+                                } else {
                                     currentPlayer = comp;
                                     displayCurrentPlayer(currentPlayer);
                                     break;
@@ -247,6 +250,22 @@ public class GoFish extends Game {
         hand2.add(rdmSelection);
         System.out.println("~~~~~The " + rdmSelection.getValue() + " of " + rdmSelection.getSuit() + " was added to your hand~~~~~");
         System.out.println(" ");
+    }
+
+    private int checkValidInput(int temp) {
+        Scanner scanner = new Scanner(System.in);
+        int val = temp;
+        if(val == 0){
+            try{
+                val = scanner.nextInt();
+                System.out.println(val);
+            }
+            catch (InputMismatchException ex){
+                System.out.println("Please request a value you wish to take from the Ai Opponent ");
+                checkValidInput(val);
+            }
+        }
+        return val;
     }
 
     private void printHand(final ArrayList<Card> currentHand) {
@@ -274,6 +293,19 @@ public class GoFish extends Game {
             }
         }
         return matchingCards;
+    }
+
+    public static ArrayList<Card> removeCards(ArrayList<Card> set, String currentPlayer) {
+        if (currentPlayer.equals("Ai Opponent")) {
+            setPlayer1.addSetCount();
+            hand1.removeAll(set);
+            return set;
+        }
+        else{
+            setPlayer2.addSetCount();
+            hand2.removeAll(set);
+            return set;
+        }
     }
     /** Formatting hand for console display. **/
     public void displayHand() {
