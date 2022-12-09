@@ -1,18 +1,15 @@
-package project;
-
-import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class GoFish extends Game {
     /**The sets of 4 cards player1 makes during the game.**/
-    static SetOfCards setPlayer1 = new SetOfCards();
+    SetOfCards setPlayer1 = new SetOfCards();
     /**The sets of 4 cards player2 makes during the game.**/
-    static SetOfCards setPlayer2 = new SetOfCards();
+    SetOfCards setPlayer2 = new SetOfCards();
     /**The Array of cards player1 has in their hand.**/
-    private static ArrayList<Card> hand1 = null;
+    private ArrayList<Card> hand1 = null;
     /**The Array of cards player1 has in their hand.**/
-    private static ArrayList<Card> hand2 = null;
+    private ArrayList<Card> hand2 = null;
     /**The Array of cards in the deck.**/
     ArrayList<Card> fullHand52 = null;
     /**A boolean that checks when the game is over.**/
@@ -35,7 +32,6 @@ public class GoFish extends Game {
     public void setNumPlayer(final int numPlayer) {
         this.numPlayer = numPlayer;
     }
-
     /**Creates each player's starting hand from the deck of 52 cards.**/
     public void createHands() {
         final int deckSize = 52; //Total number of cards in a deck
@@ -50,11 +46,8 @@ public class GoFish extends Game {
         hand2 = handPlayer2.generateHand(fullHand52);
         fullHand52.removeAll(hand2);
     }
-
-
-    /**Main play method for the game.**/
-    public void play() {
-            createHands();
+        /**Main play method for the game.**/
+        public void play() {
             String comp = "Ai Opponent";
             switch (numPlayer) {
                 case 1:
@@ -83,11 +76,9 @@ public class GoFish extends Game {
                             System.out.println("Opponent asked for a " + rdmSelect.getValue());
                             if (hand1M.size() > 0) {
                                 System.out.print("The Ai Opponent took ");
-                                int counter = 1;
-                                if(counter <= hand1M.size()){
-                                    counter++;
+                                for (int counter = 1; counter <= hand1M.size(); counter++) {
+                                    System.out.print(counter + " - ");
                                 }
-                                System.out.print(counter + " - ");
                                 System.out.print(rdmSelect.getValue());
                                 System.out.print(" From your hand.");
                                 System.out.println(" ");
@@ -98,23 +89,20 @@ public class GoFish extends Game {
 
                                 if (SetOfCards.checkIfSetInHand(hand1)) {
                                     currentPlayer = comp;
-                                    System.out.println("Ai Opponent Played a Set");
+                                    System.out.println("Ai Opponent Played a Set of " + rdmSelect);
 
                                     ArrayList<Card> set1;
                                     set1 = SetOfCards.findSetInHand(hand1);
 
-                                    System.out.println(" ");
-                                    System.out.println(set1);
-                                    System.out.println(" ");
 
-                                    removeCards(set1, currentPlayer);
+                                    setPlayer1.addSetCount();
+                                    hand1.removeAll(set1);
 
                                     //printHand("Computer's", hand1);
                                     displayHand();
                                     System.out.println(" ");
                                     System.out.println(" ");
-                                }
-                                else {
+                                } else {
                                     currentPlayer = Player.getPlayerID();
                                     displayCurrentPlayer(currentPlayer);
 
@@ -122,8 +110,7 @@ public class GoFish extends Game {
                                     displayHand();
                                     break;
                                 }
-                            }
-                            else {
+                            } else {
                                 System.out.println("You don't have a " + rdmSelect.getValue() + " in your hand...");
                                 System.out.println("GO FISH!");
                                 System.out.println(" ");
@@ -172,9 +159,7 @@ public class GoFish extends Game {
                             System.out.println("Please request a value you wish to take from the Ai Opponent");
                             System.out.println("You should have at least one in your hand (1-13)");
                             Scanner scanner = new Scanner(System.in);
-                            int val = 0;
-                            val = checkValidInput(val);
-
+                            int val = scanner.nextInt();
                             ArrayList<Card> hand2Match = askCard(val, hand1);
 
                             if (hand2Match.size() > 0) {
@@ -252,22 +237,6 @@ public class GoFish extends Game {
         System.out.println(" ");
     }
 
-    private int checkValidInput(int temp) {
-        Scanner scanner = new Scanner(System.in);
-        int val = temp;
-        if(val == 0){
-            try{
-                val = scanner.nextInt();
-                System.out.println(val);
-            }
-            catch (InputMismatchException ex){
-                System.out.println("Please request a value you wish to take from the Ai Opponent ");
-                checkValidInput(val);
-            }
-        }
-        return val;
-    }
-
     private void printHand(final ArrayList<Card> currentHand) {
         System.out.println("Your Hand:" + " (" + currentHand.size() + ")");
         for (Card card : currentHand) {
@@ -294,27 +263,16 @@ public class GoFish extends Game {
         }
         return matchingCards;
     }
-
-    public static ArrayList<Card> removeCards(ArrayList<Card> set, String currentPlayer) {
-        if (currentPlayer.equals("Ai Opponent")) {
-            setPlayer1.addSetCount();
-            hand1.removeAll(set);
-            return set;
-        }
-        else{
-            setPlayer2.addSetCount();
-            hand2.removeAll(set);
-            return set;
-        }
-    }
     /** Formatting hand for console display. **/
     public void displayHand() {
         System.out.println("------------------------------------------------------------------------------------------------------------------");
         printHand(hand2);
         System.out.println("------------------------------------------------------------------------------------------------------------------");
     }
-
-    /** Formatting current player for console display. **/
+    /**
+     *
+     * @param currentPlayer
+     */
     public void displayCurrentPlayer(String currentPlayer) {
         System.out.println("==================================================================================================================");
         System.out.println("Current Player " + currentPlayer);
