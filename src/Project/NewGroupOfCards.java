@@ -1,6 +1,3 @@
-
-package project;
-
 import java.util.ArrayList;
 
 public class NewGroupOfCards extends GroupOfCards {

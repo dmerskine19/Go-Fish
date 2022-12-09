@@ -1,5 +1,3 @@
-package project;
-
 class Player {
     /**Unique ID given to each player.**/
     private static String playerID;

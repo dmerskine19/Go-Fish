@@ -1,6 +1,3 @@
-
-package project;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -25,8 +22,6 @@ public class GoFishHand extends NewGroupOfCards {
         }
         return cardHand;
     }
-
-
     /** Used to create random numbers.
      * @return rdm - A random number.
      * @param maxVal - The max value of the random number being generated

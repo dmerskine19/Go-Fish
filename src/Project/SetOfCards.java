@@ -1,5 +1,3 @@
-package project;
-
 import java.util.ArrayList;
 
 //this class is to track the books of card that are formed during game

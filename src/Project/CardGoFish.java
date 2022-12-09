@@ -1,13 +1,9 @@
-
-package project;
-
 import org.jetbrains.annotations.NotNull;
-
 import java.util.Arrays;
 
 public class CardGoFish extends Card {
+    /** go fish value .**/
     public CardGoFish() {
-
     }
 
     public enum Values {
@@ -62,5 +58,6 @@ public class CardGoFish extends Card {
     public CardGoFish(final @NotNull Suits s, final @NotNull Values v) {
         super.setSuit(s.toString());
         super.setValue(v.ordinal() + 1);
-    }
+
+}
 }
