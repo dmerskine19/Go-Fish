@@ -8,13 +8,13 @@ class Player {
         playerID = name;
     }
     /**@return player name as a string.**/
-    public static String getPlayerID() {
+    private static String getPlayerID() {
         return playerID;
     }
     /**Sets each player's ID to the given ID.
      * @param givenID - User inputted name
      **/
-    public static void setPlayerID(final String givenID) {
+    private static void setPlayerID(final String givenID) {
         playerID = givenID;
     }
 
