@@ -31,4 +31,13 @@ public class GroupOfCards {
     public void setCards(final ArrayList<Card> cards) {
         this.cards = cards;
     }
+
+    public boolean checkCards(final ArrayList<Card> cards, String s, int v) {
+        for (Card card : cards){
+            if(card.getSuit().equals(s) && card.getValue() == v) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

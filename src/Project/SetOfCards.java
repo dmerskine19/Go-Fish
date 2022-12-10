@@ -14,6 +14,7 @@ public class SetOfCards {
     public void addSetCount() {
         this.setCount += 1;
     }
+
     /** @return setCount - the number of sets a player has made. **/
     public int countSet() {
         return this.setCount;

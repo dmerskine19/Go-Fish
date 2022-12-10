@@ -55,9 +55,29 @@ public class GoFish extends Game {
         fullHand52.removeAll(hand2);
     }
 
+    public int numPlayersInput(){
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("Welcome! :)");
+        System.out.println("This System currently only supports single player vs an AI.");
+        System.out.println("Please enter 2, when asked for the number of players.");
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------");
+
+        Scanner scanner = new Scanner(System.in);
+        numPlayer = scanner.nextInt();
+        setNumPlayer(numPlayer);
+        return numPlayer;
+    }
+
 
     /**Main play method for the game.**/
     public void play() {
+
+            Scanner scanner = new Scanner(System.in);
+            String goFishSystem = "Go Fish System";
+            numPlayersInput();
+            System.out.println("Enter your name - ");
+            String name = scanner.next();
+            new NewPlayer(name);
             createHands();
             String comp = "Ai Opponent";
             switch (numPlayer) {
@@ -175,7 +195,6 @@ public class GoFish extends Game {
                             System.out.println(" ");
                             System.out.println("Please request a value you wish to take from the Ai Opponent");
                             System.out.println("You should have at least one in your hand (1-13)");
-                            Scanner scanner = new Scanner(System.in);
                             int val = 0;
                             val = checkValidInput(val);
 
@@ -288,7 +307,7 @@ public class GoFish extends Game {
      * @param val - Defined value of card that is requested by the user
      * @param opponentPlayerHand - Defined player that the user is requesting a card from
      **/
-    public ArrayList<Card> askCard(final int val, final ArrayList<Card> opponentPlayerHand) {
+    public static ArrayList<Card> askCard(final int val, final ArrayList<Card> opponentPlayerHand) {
         ArrayList<Card> matchingCards = new ArrayList<>();
         System.out.println(" ");
         System.out.println(" ");

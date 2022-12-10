@@ -2,43 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3dc63d7a-9b14-4aca-8930-b64e4cbcf0a7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Code Coverage/css/coverage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/css/idea.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/img/arrowDown.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/img/arrowUp.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/index_SORT_BY_BLOCK.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/index_SORT_BY_CLASS.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/index_SORT_BY_LINE.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/index_SORT_BY_METHOD.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/js/highlight.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/js/highlightjs-line-numbers.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/ns-1/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/ns-1/index_SORT_BY_BLOCK.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/ns-1/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/ns-1/index_SORT_BY_CLASS.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/ns-1/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/ns-1/index_SORT_BY_LINE.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/ns-1/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/ns-1/index_SORT_BY_METHOD.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/ns-1/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/ns-1/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/ns-1/sources/source-1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/ns-1/sources/source-2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/ns-1/sources/source-3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/ns-1/sources/source-4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/ns-1/sources/source-5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/ns-1/sources/source-6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/ns-1/sources/source-7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/ns-1/sources/source-8.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/ns-1/sources/source-9.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/ns-1/sources/source-a.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code Coverage/ns-1/sources/source-b.html" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Project/NLRTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,9 +16,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="package-info" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -71,25 +36,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "create.test.in.the.same.root": "true",
-    "last_opened_file_path": "C:/Users/Dmers/Documents/GitHub/Go-Fish/Code Coverage",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dmers/Documents/GitHub/Go-Fish/Code Coverage&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Dmers\Documents\GitHub\Go-Fish" />
@@ -107,21 +72,8 @@
       <recent name="project" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UnitTest">
-    <configuration name="StartGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="project.StartGame" />
-      <module name="Go-Fish" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="project.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UnitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.NLRTests.req11">
+    <configuration name="NLRTests.req10" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Go-Fish" />
       <extension name="coverage">
         <pattern>
@@ -130,29 +82,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="project" />
-      <option name="MAIN_CLASS_NAME" value="project.UnitTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UnitTest.testEndGameSet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Go-Fish" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="project.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="project" />
-      <option name="MAIN_CLASS_NAME" value="project.UnitTest" />
-      <option name="METHOD_NAME" value="testEndGameSet" />
+      <option name="MAIN_CLASS_NAME" value="project.NLRTests" />
+      <option name="METHOD_NAME" value="req10" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UnitTest.testGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="NLRTests.req11" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Go-Fish" />
       <extension name="coverage">
         <pattern>
@@ -161,14 +98,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="project" />
-      <option name="MAIN_CLASS_NAME" value="project.UnitTest" />
-      <option name="METHOD_NAME" value="testGame" />
+      <option name="MAIN_CLASS_NAME" value="project.NLRTests" />
+      <option name="METHOD_NAME" value="req11" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UnitTest.testMaxCardsInHand" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="NLRTests.req8" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Go-Fish" />
       <extension name="coverage">
         <pattern>
@@ -177,8 +114,40 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="project" />
-      <option name="MAIN_CLASS_NAME" value="project.UnitTest" />
-      <option name="METHOD_NAME" value="testMaxCardsInHand" />
+      <option name="MAIN_CLASS_NAME" value="project.NLRTests" />
+      <option name="METHOD_NAME" value="req8" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NLRTests.req9" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Go-Fish" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="project.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="project" />
+      <option name="MAIN_CLASS_NAME" value="project.NLRTests" />
+      <option name="METHOD_NAME" value="req9" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NLRTests.testCheckIfSetInHandGood" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Go-Fish" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="project.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="project" />
+      <option name="MAIN_CLASS_NAME" value="project.NLRTests" />
+      <option name="METHOD_NAME" value="testCheckIfSetInHandGood" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -186,11 +155,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UnitTest" />
-        <item itemvalue="Application.StartGame" />
-        <item itemvalue="JUnit.UnitTest.testEndGameSet" />
-        <item itemvalue="JUnit.UnitTest.testGame" />
-        <item itemvalue="JUnit.UnitTest.testMaxCardsInHand" />
+        <item itemvalue="JUnit.NLRTests.req11" />
+        <item itemvalue="JUnit.NLRTests.req10" />
+        <item itemvalue="JUnit.NLRTests.req9" />
+        <item itemvalue="JUnit.NLRTests.testCheckIfSetInHandGood" />
+        <item itemvalue="JUnit.NLRTests.req8" />
       </list>
     </recent_temporary>
   </component>
