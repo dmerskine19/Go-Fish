@@ -1,3 +1,5 @@
+package project;
+
 public abstract class Game {
     /**Calls the main game function.**/
     public Game() {

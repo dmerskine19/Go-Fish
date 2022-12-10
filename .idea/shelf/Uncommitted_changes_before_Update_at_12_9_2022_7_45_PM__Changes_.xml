@@ -1,0 +1,24 @@
+<changelist name="Uncommitted_changes_before_Update_at_12_9_2022_7_45_PM_[Changes]" date="1670633138162" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_9_2022_7_45_PM_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 12/9/2022 7:45 PM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Go-Fish/Project/GoFish.class" />
+    <option name="AFTER_PATH" value="out/production/Go-Fish/Project/GoFish.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_9_2022_7_45_PM_[Changes]/GoFish.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Go-Fish/Project/StartGame.class" />
+    <option name="AFTER_PATH" value="out/production/Go-Fish/Project/StartGame.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_9_2022_7_45_PM_[Changes]/StartGame.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Go-Fish/Project/Player.class" />
+    <option name="AFTER_PATH" value="out/production/Go-Fish/Project/Player.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_9_2022_7_45_PM_[Changes]/Player.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Go-Fish/Project/Game.class" />
+    <option name="AFTER_PATH" value="out/production/Go-Fish/Project/Game.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_9_2022_7_45_PM_[Changes]/Game.class" />
+  </binary>
+</changelist>

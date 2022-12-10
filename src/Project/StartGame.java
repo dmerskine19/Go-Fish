@@ -1,3 +1,6 @@
+package project;
+
+
 import java.util.Scanner;
 
 class StartGame {
@@ -12,14 +15,11 @@ class StartGame {
         System.out.println("Please enter 2, when asked for the number of players.");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------");
         GoFish game = new GoFish();
-        System.out.println("Enter the number of players");
-        int numPlayer = scanner.nextInt();
+        int numPlayer = 2;
         game.setNumPlayer(numPlayer);
-        game.createHands();
-        System.out.println("Computer acts as Player 1");
-        System.out.println("Enter the name of Player 2 which is you");
+        System.out.println("Enter your name - ");
         String name = scanner.next();
-        new Newplayer(name);
+        new NewPlayer(name);
         game.addPlayers();
         game.play();
         game.declareWinner();

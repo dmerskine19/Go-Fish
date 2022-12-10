@@ -1,0 +1,754 @@
+Index: src/Project/Game.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\npackage project;\r\n\r\npublic abstract class Game {\r\n    /**Calls the main game function.**/\r\n    public Game(){\r\n    }\r\n\r\n    /**Function for when multiple player are together.**/\r\n    public void setPlayers() {\r\n    }\r\n\r\n    /**Function to call the main declareWinner function from startGame.**/\r\n    public abstract void declareWinner();\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Project/Game.java b/src/Project/Game.java
+--- a/src/Project/Game.java	(revision 798de22ae216a265132dd2d0d5e24798ab80f0cb)
++++ b/src/Project/Game.java	(date 1670632150687)
+@@ -2,13 +2,10 @@
+ package project;
+ 
+ public abstract class Game {
+-    /**Calls the main game function.**/
+-    public Game(){
++    public Game() {
+     }
+-
+-    /**Function for when multiple player are together.**/
+-    public void setPlayers() {
+-    }
++    /**Function to call the main play function from startGame.**/
++    public abstract void play();
+ 
+     /**Function to call the main declareWinner function from startGame.**/
+     public abstract void declareWinner();
+Index: src/Project/StartGame.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package project;\r\n\r\n\r\nimport java.util.Scanner;\r\n\r\nclass StartGame {\r\n\r\n    public static void main(final String[] args) {\r\n\r\n        Scanner scanner = new Scanner(System.in);\r\n        String goFishSystem = \"Go Fish System\";\r\n        System.out.println(\"----------------------------------------------------------------------------------------------------------------------------------------------------------\");\r\n        System.out.println(\"Welcome! This is the \" + goFishSystem + \" :)\");\r\n        System.out.println(\"This System currently only supports single player vs an AI.\");\r\n        System.out.println(\"Please enter 2, when asked for the number of players.\");\r\n        System.out.println(\"----------------------------------------------------------------------------------------------------------------------------------------------------------\");\r\n        GoFish game = new GoFish();\r\n        int numPlayer = 2;\r\n        game.setNumPlayer(numPlayer);\r\n        System.out.println(\"Enter your name - \");\r\n        String name = scanner.next();\r\n        new NewPlayer(name);\r\n        game.addPlayers();\r\n        game.play();\r\n        game.declareWinner();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Project/StartGame.java b/src/Project/StartGame.java
+--- a/src/Project/StartGame.java	(revision 798de22ae216a265132dd2d0d5e24798ab80f0cb)
++++ b/src/Project/StartGame.java	(date 1670632209897)
+@@ -15,12 +15,25 @@
+         System.out.println("Please enter 2, when asked for the number of players.");
+         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------");
+         GoFish game = new GoFish();
+-        int numPlayer = 2;
+-        game.setNumPlayer(numPlayer);
++        System.out.println("Number of Players - ");
++        int numP = scanner.nextInt();
++        if(numP < 1 || numP > 2 ) {
++            System.out.println("Game Supports 1 or 2 Players ");
++        }
++        else{
++            game.setNumPlayer(numP);
++        }
+         System.out.println("Enter your name - ");
+         String name = scanner.next();
+-        new NewPlayer(name);
+-        game.addPlayers();
++        if(numP == 1) {
++            new NewPlayer(name);
++        }
++        else{
++            System.out.println("Enter Player 2's name - ");
++            String name2 = scanner.next();
++            new NewPlayer(name2);
++
++        }
+         game.play();
+         game.declareWinner();
+     }
+Index: src/Project/GoFish.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package project;\r\n\r\nimport java.util.InputMismatchException;\r\nimport java.util.Scanner;\r\nimport java.util.ArrayList;\r\n\r\npublic class GoFish extends Game {\r\n    /**The sets of 4 cards player1 makes during the game.**/\r\n    static SetOfCards setPlayer1 = new SetOfCards();\r\n    /**The sets of 4 cards player2 makes during the game.**/\r\n    static SetOfCards setPlayer2 = new SetOfCards();\r\n    /**The Array of cards player1 has in their hand.**/\r\n    private static ArrayList<Card> hand1 = null;\r\n    /**The Array of cards player1 has in their hand.**/\r\n    private static ArrayList<Card> hand2 = null;\r\n    /**The Array of cards in the deck.**/\r\n    ArrayList<Card> fullHand52 = null;\r\n    /**A boolean that checks when the game is over.**/\r\n    private boolean gameEnd = false;\r\n    /**A user inputted number, that is the amount of players.**/\r\n    private int numPlayer;\r\n\r\n    /**First call to the GoFish class from StartGame.**/\r\n    public GoFish() {\r\n        super();\r\n    }\r\n\r\n    /**Adds players to the array containing the current players.**/\r\n    public void addPlayers() {\r\n        setPlayers();\r\n    }\r\n    /**Setter for the user inputted number of player.\r\n     * @param numPlayer - user inputted value for the amount of players\r\n     **/\r\n    public void setNumPlayer(final int numPlayer) {\r\n        this.numPlayer = numPlayer;\r\n    }\r\n\r\n    /**Creates each player's starting hand from the deck of 52 cards.**/\r\n    public void createHands() {\r\n        final int deckSize = 52; //Total number of cards in a deck\r\n        NewGroupOfCards newDeck = new NewGroupOfCards(deckSize);\r\n        newDeck.shuffle();\r\n        fullHand52 = newDeck.generateCards();\r\n        final int startingSizeofHand = 7; //number of cards in a hand at start.\r\n        GoFishHand handPlayer1 = new GoFishHand(startingSizeofHand);\r\n        hand1 = handPlayer1.generateHand(fullHand52);\r\n        fullHand52.removeAll(hand1);\r\n        GoFishHand handPlayer2 = new GoFishHand(startingSizeofHand);\r\n        hand2 = handPlayer2.generateHand(fullHand52);\r\n        fullHand52.removeAll(hand2);\r\n    }\r\n\r\n\r\n    /**Main play method for the game.**/\r\n    public void play() {\r\n            createHands();\r\n            String comp = \"Ai Opponent\";\r\n            switch (numPlayer) {\r\n                case 1:\r\n                    System.out.println(\"-------------------------------------\");\r\n                    System.out.println(\"Go Fish Requires 2 or more players.\");\r\n                    System.out.println(\"The game supports, 1 player vs an AI.\");\r\n                    System.out.println(\"Enter 2 for the number of players.\");\r\n                    System.out.println(\"-------------------------------------\");\r\n\r\n                case 2:\r\n                    System.out.println(\"Starting Game...\");\r\n                    String currentPlayer = comp;\r\n                    //printHand(\"Computer's\", hand1);\r\n                    displayHand();\r\n                    System.out.println(\" \");\r\n\r\n                    while (!gameEnd) {\r\n                        while (currentPlayer.equals(comp)) {\r\n                            if (hand1.size() == 0) {\r\n                                gameEnd = true;\r\n                                break;\r\n                            }\r\n                            Card rdmSelect = GoFishHand.rdmCardFromHand(hand1);\r\n                            ArrayList<Card> hand1M = askCard(rdmSelect.getValue(), hand2);\r\n                            System.out.println(\" \");\r\n                            System.out.println(\"Opponent asked for a \" + rdmSelect.getValue());\r\n                            if (hand1M.size() > 0) {\r\n                                System.out.print(\"The Ai Opponent took \");\r\n                                int counter = 1;\r\n                                if(counter <= hand1M.size()){\r\n                                    counter++;\r\n                                }\r\n                                System.out.print(counter + \" - \");\r\n                                System.out.print(rdmSelect.getValue());\r\n                                System.out.print(\" From your hand.\");\r\n                                System.out.println(\" \");\r\n                                System.out.println(\" \");\r\n                                hand1.addAll(hand1M);\r\n                                hand2.removeAll(hand1M);\r\n\r\n\r\n                                if (SetOfCards.checkIfSetInHand(hand1)) {\r\n                                    currentPlayer = comp;\r\n                                    System.out.println(\"Ai Opponent Played a Set\");\r\n\r\n                                    ArrayList<Card> set1;\r\n                                    set1 = SetOfCards.findSetInHand(hand1);\r\n\r\n                                    System.out.println(\" \");\r\n                                    System.out.println(set1);\r\n                                    System.out.println(\" \");\r\n\r\n                                    removeCards(set1, currentPlayer);\r\n\r\n                                    //printHand(\"Computer's\", hand1);\r\n                                    displayHand();\r\n                                    System.out.println(\" \");\r\n                                    System.out.println(\" \");\r\n                                }\r\n                                else {\r\n                                    currentPlayer = Player.getPlayerID();\r\n                                    displayCurrentPlayer(currentPlayer);\r\n\r\n                                    //printHand(\"Computer's\", hand1);\r\n                                    displayHand();\r\n                                    break;\r\n                                }\r\n                            }\r\n                            else {\r\n                                System.out.println(\"You don't have a \" + rdmSelect.getValue() + \" in your hand...\");\r\n                                System.out.println(\"GO FISH!\");\r\n                                System.out.println(\" \");\r\n                                System.out.println(\"~~~~~A Card Has Been Added to your Opponents Hand~~~~~\");\r\n                                System.out.println(\" \");\r\n\r\n                                if (fullHand52.size() == 0) {\r\n                                    gameEnd = true;\r\n                                    break;\r\n                                }\r\n                                Card rdmSelection2 = GoFishHand.rdmCardFromHand(fullHand52);\r\n                                fullHand52.remove(rdmSelection2);\r\n                                hand1.add(rdmSelection2);\r\n\r\n                                //printHand(\"Computer's\", hand1);\r\n                                displayHand();\r\n\r\n                                if (SetOfCards.checkIfSetInHand(hand1)) {\r\n                                    currentPlayer = \"player1\";\r\n                                    displayCurrentPlayer(currentPlayer);\r\n\r\n                                    ArrayList<Card> book1;\r\n                                    book1 = SetOfCards.findSetInHand(hand1);\r\n\r\n                                    setPlayer1.addSetCount();\r\n                                    hand1.removeAll(book1);\r\n\r\n                                    //printHand(\"Computer's\", hand1);\r\n                                    displayHand();\r\n\r\n                                } else {\r\n                                    currentPlayer = Player.getPlayerID();\r\n                                    displayCurrentPlayer(currentPlayer);\r\n                                    break;\r\n                                }\r\n                            }\r\n                        }\r\n\r\n                        while (currentPlayer.equalsIgnoreCase(Player.getPlayerID())) {\r\n                            if (hand2.size() == 0) {\r\n                                gameEnd = true;\r\n                                break;\r\n                            }\r\n                            System.out.println(\" \");\r\n                            System.out.println(\" \");\r\n                            System.out.println(\"Please request a value you wish to take from the Ai Opponent\");\r\n                            System.out.println(\"You should have at least one in your hand (1-13)\");\r\n                            Scanner scanner = new Scanner(System.in);\r\n                            int val = 0;\r\n                            val = checkValidInput(val);\r\n\r\n                            ArrayList<Card> hand2Match = askCard(val, hand1);\r\n\r\n                            if (hand2Match.size() > 0) {\r\n                                hand2.addAll(hand2Match);\r\n                                hand1.removeAll(hand2Match);\r\n                                System.out.println(\"The Ai Opponent had a card with the value \" + val + \"!\");\r\n                                System.out.println(\"It was added to your hand\");\r\n                                System.out.println(\" \");\r\n                                if (SetOfCards.checkIfSetInHand(hand2)) {\r\n                                    currentPlayer = Player.getPlayerID();\r\n                                    System.out.println(\"This gives \" + currentPlayer + \" a set of 4!\");\r\n                                    System.out.println(\" \");\r\n                                    System.out.println(\" \");\r\n\r\n                                    ArrayList<Card> set2;\r\n                                    set2 = SetOfCards.findSetInHand(hand2);\r\n\r\n                                    setPlayer2.addSetCount();\r\n                                    hand2.removeAll(set2);\r\n\r\n\r\n                                } else {\r\n                                    currentPlayer = comp;\r\n                                    displayCurrentPlayer(currentPlayer);\r\n\r\n                                }\r\n                                break;\r\n                            } else {\r\n                                System.out.println(\"Go Fish!\");\r\n                                System.out.println(\" \");\r\n                                System.out.println(\"Type d to draw a card\");\r\n                                String ans = scanner.next();\r\n                                while (ans.charAt(0) != 'd') {\r\n                                    System.out.println(\"Type d to draw a card\");\r\n                                }\r\n                                System.out.println(\" \");\r\n\r\n                                if (fullHand52.size() == 0) {\r\n                                    gameEnd = true;\r\n                                    break;\r\n                                }\r\n\r\n                                drawnCard();\r\n\r\n                                if (SetOfCards.checkIfSetInHand(hand2)) {\r\n\r\n                                    ArrayList<Card> set2;\r\n                                    set2 = SetOfCards.findSetInHand(hand2);\r\n                                    currentPlayer = Player.getPlayerID();\r\n                                    System.out.println(\"This gives \" + currentPlayer + \" a point!\");\r\n                                    System.out.println(\" \");\r\n                                    System.out.println(\" \");\r\n                                    setPlayer2.addSetCount();\r\n                                    hand2.removeAll(set2);\r\n\r\n                                } else {\r\n                                    currentPlayer = comp;\r\n                                    displayCurrentPlayer(currentPlayer);\r\n                                    break;\r\n                                }\r\n                            }\r\n                        }\r\n                        //printHand(\"Computer's\", hand1);\r\n                        displayHand();\r\n                    }\r\n                    break;\r\n                }\r\n        }\r\n\r\n    private void drawnCard() {\r\n        Card rdmSelection = GoFishHand.rdmCardFromHand(fullHand52);\r\n        fullHand52.remove(rdmSelection);\r\n        hand2.add(rdmSelection);\r\n        System.out.println(\"~~~~~The \" + rdmSelection.getValue() + \" of \" + rdmSelection.getSuit() + \" was added to your hand~~~~~\");\r\n        System.out.println(\" \");\r\n    }\r\n\r\n    private int checkValidInput(int temp) {\r\n        Scanner scanner = new Scanner(System.in);\r\n        int val = temp;\r\n        if(val == 0){\r\n            try{\r\n                val = scanner.nextInt();\r\n                System.out.println(val);\r\n            }\r\n            catch (InputMismatchException ex){\r\n                System.out.println(\"Please request a value you wish to take from the Ai Opponent \");\r\n                checkValidInput(val);\r\n            }\r\n        }\r\n        return val;\r\n    }\r\n\r\n    private void printHand(final ArrayList<Card> currentHand) {\r\n        System.out.println(\"Your Hand:\" + \" (\" + currentHand.size() + \")\");\r\n        for (Card card : currentHand) {\r\n            System.out.print(card.getSuit() + \" \" + card.getValue() + \" | \");\r\n        }\r\n        System.out.println();\r\n    }\r\n    /** Method that contains the logic for asking a player for a card.\r\n     * @return matchingCards - All cards that match the users defined value\r\n     * @param val - Defined value of card that is requested by the user\r\n     * @param opponentPlayerHand - Defined player that the user is requesting a card from\r\n     **/\r\n    public ArrayList<Card> askCard(final int val, final ArrayList<Card> opponentPlayerHand) {\r\n        ArrayList<Card> matchingCards = new ArrayList<>();\r\n        System.out.println(\" \");\r\n        System.out.println(\" \");\r\n\r\n\r\n        for (Card card : opponentPlayerHand) {\r\n            if (card.getValue() == val) {\r\n\r\n                matchingCards.add(card);\r\n            }\r\n        }\r\n        return matchingCards;\r\n    }\r\n\r\n    public static ArrayList<Card> removeCards(ArrayList<Card> set, String currentPlayer) {\r\n        if (currentPlayer.equals(\"Ai Opponent\")) {\r\n            setPlayer1.addSetCount();\r\n            hand1.removeAll(set);\r\n            return set;\r\n        }\r\n        else{\r\n            setPlayer2.addSetCount();\r\n            hand2.removeAll(set);\r\n            return set;\r\n        }\r\n    }\r\n    /** Formatting hand for console display. **/\r\n    public void displayHand() {\r\n        System.out.println(\"------------------------------------------------------------------------------------------------------------------\");\r\n        printHand(hand2);\r\n        System.out.println(\"------------------------------------------------------------------------------------------------------------------\");\r\n    }\r\n\r\n    /** Formatting current player for console display. **/\r\n    public void displayCurrentPlayer(String currentPlayer) {\r\n        System.out.println(\"==================================================================================================================\");\r\n        System.out.println(\"Current Player \" + currentPlayer);\r\n        System.out.println(\"==================================================================================================================\");\r\n    }\r\n\r\n    /** Logic for declaring a winner of the game. **/\r\n    public void declareWinner() {\r\n        if (setPlayer1.countSet() > setPlayer2.countSet()) {\r\n            System.out.println(\"Player 1 is the winner !\");\r\n        } else if (setPlayer2.countSet() > setPlayer1.countSet()) {\r\n            System.out.println(\"\" + Player.getPlayerID() + \" is the winner !\");\r\n        } else {\r\n            System.out.println(\"TIE !\");\r\n        }\r\n        System.out.println(\"Player 1 - \" + setPlayer1.countSet() + \" sets\");\r\n        System.out.println(\"\" + Player.getPlayerID() + \" - \" + setPlayer2.countSet() + \" sets\");\r\n    }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Project/GoFish.java b/src/Project/GoFish.java
+--- a/src/Project/GoFish.java	(revision 798de22ae216a265132dd2d0d5e24798ab80f0cb)
++++ b/src/Project/GoFish.java	(date 1670632876847)
+@@ -4,44 +4,74 @@
+ import java.util.Scanner;
+ import java.util.ArrayList;
+ 
++import static project.Player.getPlayerID;
++import static project.Player.getPlayerNames;
++
+ public class GoFish extends Game {
+-    /**The sets of 4 cards player1 makes during the game.**/
++    /**
++     * The sets of 4 cards player1 makes during the game.
++     **/
+     static SetOfCards setPlayer1 = new SetOfCards();
+-    /**The sets of 4 cards player2 makes during the game.**/
++    /**
++     * The sets of 4 cards player2 makes during the game.
++     **/
+     static SetOfCards setPlayer2 = new SetOfCards();
+-    /**The Array of cards player1 has in their hand.**/
++    /**
++     * The Array of cards player1 has in their hand.
++     **/
+     private static ArrayList<Card> hand1 = null;
+-    /**The Array of cards player1 has in their hand.**/
++    /**
++     * The Array of cards player1 has in their hand.
++     **/
+     private static ArrayList<Card> hand2 = null;
+-    /**The Array of cards in the deck.**/
++    /**
++     * The Array of cards in the deck.
++     **/
+     ArrayList<Card> fullHand52 = null;
+-    /**A boolean that checks when the game is over.**/
++    /**
++     * A boolean that checks when the game is over.
++     **/
+     private boolean gameEnd = false;
+-    /**A user inputted number, that is the amount of players.**/
++    /**
++     * A user inputted number, that is the amount of players.
++     **/
+     private int numPlayer;
++    private String name;
++    private String name2;
+ 
+-    /**First call to the GoFish class from StartGame.**/
++    /**
++     * First call to the GoFish class from StartGame.
++     **/
+     public GoFish() {
+         super();
+     }
+ 
+-    /**Adds players to the array containing the current players.**/
+-    public void addPlayers() {
+-        setPlayers();
+-    }
+-    /**Setter for the user inputted number of player.
++
++    /**
++     * Setter for the user inputted number of player.
++     *
+      * @param numPlayer - user inputted value for the amount of players
+      **/
+     public void setNumPlayer(final int numPlayer) {
+         this.numPlayer = numPlayer;
+     }
+ 
+-    /**Creates each player's starting hand from the deck of 52 cards.**/
++    public void setPlayer(String name, String name2) {
++        ArrayList<String> Players = getPlayerNames();
++        String Player1 = name;
++        if (Players.size() == 2) {
++            String Player2 = name2;
++        }
++    }
++
++    /**
++     * Creates each player's starting hand from the deck of 52 cards.
++     **/
+     public void createHands() {
+         final int deckSize = 52; //Total number of cards in a deck
+         NewGroupOfCards newDeck = new NewGroupOfCards(deckSize);
+-        newDeck.shuffle();
+         fullHand52 = newDeck.generateCards();
++        newDeck.shuffle();
+         final int startingSizeofHand = 7; //number of cards in a hand at start.
+         GoFishHand handPlayer1 = new GoFishHand(startingSizeofHand);
+         hand1 = handPlayer1.generateHand(fullHand52);
+@@ -49,200 +79,285 @@
+         GoFishHand handPlayer2 = new GoFishHand(startingSizeofHand);
+         hand2 = handPlayer2.generateHand(fullHand52);
+         fullHand52.removeAll(hand2);
++
+     }
+ 
+ 
+-    /**Main play method for the game.**/
++    /**
++     * Main play method for the game.
++     **/
+     public void play() {
+-            createHands();
+-            String comp = "Ai Opponent";
+-            switch (numPlayer) {
+-                case 1:
+-                    System.out.println("-------------------------------------");
+-                    System.out.println("Go Fish Requires 2 or more players.");
+-                    System.out.println("The game supports, 1 player vs an AI.");
+-                    System.out.println("Enter 2 for the number of players.");
+-                    System.out.println("-------------------------------------");
+-
+-                case 2:
+-                    System.out.println("Starting Game...");
+-                    String currentPlayer = comp;
+-                    //printHand("Computer's", hand1);
+-                    displayHand();
+-                    System.out.println(" ");
+-
+-                    while (!gameEnd) {
+-                        while (currentPlayer.equals(comp)) {
+-                            if (hand1.size() == 0) {
+-                                gameEnd = true;
+-                                break;
+-                            }
+-                            Card rdmSelect = GoFishHand.rdmCardFromHand(hand1);
+-                            ArrayList<Card> hand1M = askCard(rdmSelect.getValue(), hand2);
+-                            System.out.println(" ");
+-                            System.out.println("Opponent asked for a " + rdmSelect.getValue());
+-                            if (hand1M.size() > 0) {
+-                                System.out.print("The Ai Opponent took ");
+-                                int counter = 1;
+-                                if(counter <= hand1M.size()){
+-                                    counter++;
+-                                }
+-                                System.out.print(counter + " - ");
+-                                System.out.print(rdmSelect.getValue());
+-                                System.out.print(" From your hand.");
+-                                System.out.println(" ");
+-                                System.out.println(" ");
+-                                hand1.addAll(hand1M);
+-                                hand2.removeAll(hand1M);
++        createHands();
++        String comp = "Ai Opponent";
++        switch (numPlayer) {
++            case 1 -> {
++                ArrayList<Card> Player1 = hand1;
++                ArrayList<Card> Comp = hand2;
++                String currentPlayer = comp;
++                System.out.println("Starting Game...");
++                //printHand("Computer's", hand1);
++                displayHand();
++                System.out.println(" ");
++                while (!gameEnd) {
++                    while (currentPlayer.equals(comp)) {
++                        if (hand1.size() == 0) {
++                            gameEnd = true;
++                            break;
++                        }
++                        Card rdmSelect = GoFishHand.rdmCardFromHand(hand1);
++                        ArrayList<Card> hand1M = askCard(rdmSelect.getValue(), hand2);
++                        System.out.println(" ");
++                        System.out.println("Opponent asked for a " + rdmSelect.getValue());
++                        if (hand1M.size() > 0) {
++                            System.out.print("The Ai Opponent took ");
++                            int counter = 1;
++                            if (counter <= hand1M.size()) {
++                                counter++;
++                            }
++                            System.out.print(counter + " - ");
++                            System.out.print(rdmSelect.getValue());
++                            System.out.print(" From your hand.");
++                            System.out.println(" ");
++                            System.out.println(" ");
++                            hand1.addAll(hand1M);
++                            hand2.removeAll(hand1M);
+ 
+ 
+-                                if (SetOfCards.checkIfSetInHand(hand1)) {
+-                                    currentPlayer = comp;
+-                                    System.out.println("Ai Opponent Played a Set");
++                            if (SetOfCards.checkIfSetInHand(hand1)) {
++                                currentPlayer = comp;
++                                System.out.println("Ai Opponent Played a Set");
+ 
+-                                    ArrayList<Card> set1;
+-                                    set1 = SetOfCards.findSetInHand(hand1);
++                                ArrayList<Card> set1;
++                                set1 = SetOfCards.findSetInHand(hand1);
+ 
+-                                    System.out.println(" ");
+-                                    System.out.println(set1);
+-                                    System.out.println(" ");
++                                System.out.println(" ");
++                                System.out.println(set1);
++                                System.out.println(" ");
+ 
+-                                    removeCards(set1, currentPlayer);
++                                removeCards(set1, currentPlayer);
+ 
+-                                    //printHand("Computer's", hand1);
+-                                    displayHand();
+-                                    System.out.println(" ");
+-                                    System.out.println(" ");
+-                                }
+-                                else {
+-                                    currentPlayer = Player.getPlayerID();
+-                                    displayCurrentPlayer(currentPlayer);
++                                //printHand("Computer's", hand1);
++                                displayHand();
++                                System.out.println(" ");
++                                System.out.println(" ");
++                            } else {
++                                currentPlayer = getPlayerID();
++                                displayCurrentPlayer(currentPlayer);
+ 
+-                                    //printHand("Computer's", hand1);
+-                                    displayHand();
+-                                    break;
+-                                }
++                                //printHand("Computer's", hand1);
++                                displayHand();
++                                break;
+                             }
+-                            else {
+-                                System.out.println("You don't have a " + rdmSelect.getValue() + " in your hand...");
+-                                System.out.println("GO FISH!");
+-                                System.out.println(" ");
+-                                System.out.println("~~~~~A Card Has Been Added to your Opponents Hand~~~~~");
+-                                System.out.println(" ");
++                        } else {
++                            System.out.println("You don't have a " + rdmSelect.getValue() + " in your hand...");
++                            System.out.println("GO FISH!");
++                            System.out.println(" ");
++                            System.out.println("~~~~~A Card Has Been Added to your Opponents Hand~~~~~");
++                            System.out.println(" ");
+ 
+-                                if (fullHand52.size() == 0) {
+-                                    gameEnd = true;
+-                                    break;
+-                                }
+-                                Card rdmSelection2 = GoFishHand.rdmCardFromHand(fullHand52);
+-                                fullHand52.remove(rdmSelection2);
+-                                hand1.add(rdmSelection2);
++                            if (fullHand52.size() == 0) {
++                                gameEnd = true;
++                                break;
++                            }
++                            Card rdmSelection2 = GoFishHand.rdmCardFromHand(fullHand52);
++                            fullHand52.remove(rdmSelection2);
++                            hand1.add(rdmSelection2);
+ 
+-                                //printHand("Computer's", hand1);
+-                                displayHand();
++                            //printHand("Computer's", hand1);
++                            displayHand();
+ 
+-                                if (SetOfCards.checkIfSetInHand(hand1)) {
+-                                    currentPlayer = "player1";
+-                                    displayCurrentPlayer(currentPlayer);
++                            if (SetOfCards.checkIfSetInHand(hand1)) {
++                                currentPlayer = "player1";
++                                displayCurrentPlayer(currentPlayer);
+ 
+-                                    ArrayList<Card> book1;
+-                                    book1 = SetOfCards.findSetInHand(hand1);
++                                ArrayList<Card> book1;
++                                book1 = SetOfCards.findSetInHand(hand1);
+ 
+-                                    setPlayer1.addSetCount();
+-                                    hand1.removeAll(book1);
++                                setPlayer1.addSetCount();
++                                hand1.removeAll(book1);
+ 
+-                                    //printHand("Computer's", hand1);
+-                                    displayHand();
++                                //printHand("Computer's", hand1);
++                                displayHand();
+ 
+-                                } else {
+-                                    currentPlayer = Player.getPlayerID();
+-                                    displayCurrentPlayer(currentPlayer);
+-                                    break;
+-                                }
+-                            }
+-                        }
++                            } else {
++                                currentPlayer = getPlayerID();
++                                displayCurrentPlayer(currentPlayer);
++                                break;
++                            }
++                        }
++                    }
+ 
+-                        while (currentPlayer.equalsIgnoreCase(Player.getPlayerID())) {
+-                            if (hand2.size() == 0) {
+-                                gameEnd = true;
+-                                break;
+-                            }
+-                            System.out.println(" ");
+-                            System.out.println(" ");
+-                            System.out.println("Please request a value you wish to take from the Ai Opponent");
+-                            System.out.println("You should have at least one in your hand (1-13)");
+-                            Scanner scanner = new Scanner(System.in);
+-                            int val = 0;
+-                            val = checkValidInput(val);
++                    while (currentPlayer.equalsIgnoreCase(getPlayerID())) {
++                        if (hand2.size() == 0) {
++                            gameEnd = true;
++                            break;
++                        }
++                        System.out.println(" ");
++                        System.out.println(" ");
++                        System.out.println("Please request a value you wish to take from the Ai Opponent");
++                        System.out.println("You should have at least one in your hand (1-13)");
++                        Scanner scanner = new Scanner(System.in);
++                        int val = 0;
++                        val = checkValidInput(val);
+ 
+-                            ArrayList<Card> hand2Match = askCard(val, hand1);
++                        ArrayList<Card> hand2Match = askCard(val, hand1);
+ 
+-                            if (hand2Match.size() > 0) {
+-                                hand2.addAll(hand2Match);
+-                                hand1.removeAll(hand2Match);
+-                                System.out.println("The Ai Opponent had a card with the value " + val + "!");
+-                                System.out.println("It was added to your hand");
+-                                System.out.println(" ");
+-                                if (SetOfCards.checkIfSetInHand(hand2)) {
+-                                    currentPlayer = Player.getPlayerID();
+-                                    System.out.println("This gives " + currentPlayer + " a set of 4!");
+-                                    System.out.println(" ");
+-                                    System.out.println(" ");
++                        if (hand2Match.size() > 0) {
++                            hand2.addAll(hand2Match);
++                            hand1.removeAll(hand2Match);
++                            System.out.println("The Ai Opponent had a card with the value " + val + "!");
++                            System.out.println("It was added to your hand");
++                            System.out.println(" ");
++                            if (SetOfCards.checkIfSetInHand(hand2)) {
++                                currentPlayer = getPlayerID();
++                                System.out.println("This gives " + currentPlayer + " a set of 4!");
++                                System.out.println(" ");
++                                System.out.println(" ");
+ 
+-                                    ArrayList<Card> set2;
+-                                    set2 = SetOfCards.findSetInHand(hand2);
++                                ArrayList<Card> set2;
++                                set2 = SetOfCards.findSetInHand(hand2);
+ 
+-                                    setPlayer2.addSetCount();
+-                                    hand2.removeAll(set2);
++                                setPlayer2.addSetCount();
++                                hand2.removeAll(set2);
+ 
+ 
+-                                } else {
+-                                    currentPlayer = comp;
+-                                    displayCurrentPlayer(currentPlayer);
++                            } else {
++                                currentPlayer = comp;
++                                displayCurrentPlayer(currentPlayer);
+ 
+-                                }
+-                                break;
+-                            } else {
+-                                System.out.println("Go Fish!");
+-                                System.out.println(" ");
+-                                System.out.println("Type d to draw a card");
+-                                String ans = scanner.next();
+-                                while (ans.charAt(0) != 'd') {
+-                                    System.out.println("Type d to draw a card");
+-                                }
+-                                System.out.println(" ");
++                            }
++                            break;
++                        } else {
++                            System.out.println("Go Fish!");
++                            System.out.println(" ");
++                            System.out.println("Type d to draw a card");
++                            String ans = scanner.next();
++                            while (ans.charAt(0) != 'd') {
++                                System.out.println("Type d to draw a card");
++                            }
++                            System.out.println(" ");
+ 
+-                                if (fullHand52.size() == 0) {
+-                                    gameEnd = true;
+-                                    break;
+-                                }
++                            if (fullHand52.size() == 0) {
++                                gameEnd = true;
++                                break;
++                            }
+ 
+-                                drawnCard();
++                            drawnCard();
+ 
+-                                if (SetOfCards.checkIfSetInHand(hand2)) {
++                            if (SetOfCards.checkIfSetInHand(hand2)) {
+ 
+-                                    ArrayList<Card> set2;
+-                                    set2 = SetOfCards.findSetInHand(hand2);
+-                                    currentPlayer = Player.getPlayerID();
+-                                    System.out.println("This gives " + currentPlayer + " a point!");
+-                                    System.out.println(" ");
+-                                    System.out.println(" ");
+-                                    setPlayer2.addSetCount();
+-                                    hand2.removeAll(set2);
++                                ArrayList<Card> set2;
++                                set2 = SetOfCards.findSetInHand(hand2);
++                                currentPlayer = getPlayerID();
++                                System.out.println("This gives " + currentPlayer + " a point!");
++                                System.out.println(" ");
++                                System.out.println(" ");
++                                setPlayer2.addSetCount();
++                                hand2.removeAll(set2);
+ 
+-                                } else {
+-                                    currentPlayer = comp;
+-                                    displayCurrentPlayer(currentPlayer);
+-                                    break;
+-                                }
+-                            }
+-                        }
+-                        //printHand("Computer's", hand1);
+-                        displayHand();
+-                    }
+-                    break;
+-                }
+-        }
++                            } else {
++                                currentPlayer = comp;
++                                displayCurrentPlayer(currentPlayer);
++                                break;
++                            }
++                        }
++                    }
++                    //printHand("Computer's", hand1);
++                    displayHand();
++                }
++            }
++            case 2 -> {
++                System.out.println("Starting Game...");
++                String currentPlayer = null;
++                while (currentPlayer.equalsIgnoreCase(getPlayerID())) {
++                    if (hand2.size() == 0) {
++                        gameEnd = true;
++                        break;
++                    }
++                    System.out.println(" ");
++                    System.out.println(" ");
++                    System.out.println("Please request a value you wish to take from the Ai Opponent");
++                    System.out.println("You should have at least one in your hand (1-13)");
++                    Scanner scanner = new Scanner(System.in);
++                    int val = 0;
++                    val = checkValidInput(val);
++
++                    ArrayList<Card> hand2Match = askCard(val, hand1);
++
++                    if (hand2Match.size() > 0) {
++                        hand2.addAll(hand2Match);
++                        hand1.removeAll(hand2Match);
++                        System.out.println("The Ai Opponent had a card with the value " + val + "!");
++                        System.out.println("It was added to your hand");
++                        System.out.println(" ");
++                        if (SetOfCards.checkIfSetInHand(hand2)) {
++                            currentPlayer = getPlayerID();
++                            System.out.println("This gives " + currentPlayer + " a set of 4!");
++                            System.out.println(" ");
++                            System.out.println(" ");
++
++                            ArrayList<Card> set2;
++                            set2 = SetOfCards.findSetInHand(hand2);
++
++                            setPlayer2.addSetCount();
++                            hand2.removeAll(set2);
++
++
++                        } else {
++                            currentPlayer = comp;
++                            displayCurrentPlayer(currentPlayer);
++
++                        }
++                        break;
++                    } else {
++                        System.out.println("Go Fish!");
++                        System.out.println(" ");
++                        System.out.println("Type d to draw a card");
++                        String ans = scanner.next();
++                        while (ans.charAt(0) != 'd') {
++                            System.out.println("Type d to draw a card");
++                        }
++                        System.out.println(" ");
++
++                        if (fullHand52.size() == 0) {
++                            gameEnd = true;
++                            break;
++                        }
++
++                        drawnCard();
++
++                        if (SetOfCards.checkIfSetInHand(hand2)) {
++
++                            ArrayList<Card> set2;
++                            set2 = SetOfCards.findSetInHand(hand2);
++                            currentPlayer = getPlayerID();
++                            System.out.println("This gives " + currentPlayer + " a point!");
++                            System.out.println(" ");
++                            System.out.println(" ");
++                            setPlayer2.addSetCount();
++                            hand2.removeAll(set2);
++
++                        } else {
++                            currentPlayer = comp;
++                            displayCurrentPlayer(currentPlayer);
++                            break;
++                        }
++                    }
++                }
++                //printHand("Computer's", hand1);
++                displayHand();
++
++            }
++        }
++    }
++
++    private ArrayList<String> getPlayerId() {
++        ArrayList<String> Players = new ArrayList<String>();
++        Players = getPlayerNames();
++        return Players;
++    }
++
++
+ 
+     private void drawnCard() {
+         Card rdmSelection = GoFishHand.rdmCardFromHand(fullHand52);
+@@ -326,12 +441,12 @@
+         if (setPlayer1.countSet() > setPlayer2.countSet()) {
+             System.out.println("Player 1 is the winner !");
+         } else if (setPlayer2.countSet() > setPlayer1.countSet()) {
+-            System.out.println("" + Player.getPlayerID() + " is the winner !");
++            System.out.println("" + getPlayerID() + " is the winner !");
+         } else {
+             System.out.println("TIE !");
+         }
+         System.out.println("Player 1 - " + setPlayer1.countSet() + " sets");
+-        System.out.println("" + Player.getPlayerID() + " - " + setPlayer2.countSet() + " sets");
++        System.out.println("" + getPlayerID() + " - " + setPlayer2.countSet() + " sets");
+     }
+ }
+ 
+Index: src/Project/Newplayer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package project;\r\n\r\npublic class NewPlayer extends Player {\r\n/**Sets New Players name, creating an ID.\r\n* @param name - User specified name\r\n**/\r\npublic NewPlayer(final String name) {\r\nsuper(name);\r\nPlayer.setPlayerID(name);\r\n}\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Project/Newplayer.java b/src/Project/Newplayer.java
+--- a/src/Project/Newplayer.java	(revision 798de22ae216a265132dd2d0d5e24798ab80f0cb)
++++ b/src/Project/Newplayer.java	(date 1670629974132)
+@@ -4,8 +4,8 @@
+ /**Sets New Players name, creating an ID.
+ * @param name - User specified name
+ **/
+-public NewPlayer(final String name) {
+-super(name);
+-Player.setPlayerID(name);
+-}
++    public NewPlayer(final String name) {
++        super(name);
++        Player.setPlayerID(name);
++    }
+ }
+Index: src/Project/Player.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package project;\r\n\r\nclass Player {\r\n    /**Unique ID given to each player.**/\r\n    private static String playerID;\r\n    /**Sets each player's ID to the given name.\r\n     * @param name - User inputted name\r\n     **/\r\n    Player(final String name) {\r\n        playerID = name;\r\n    }\r\n    /**@return player name as a string.**/\r\n    public static String getPlayerID() {\r\n        return playerID;\r\n    }\r\n    /**Sets each player's ID to the given ID.\r\n     * @param givenID - User inputted name\r\n     **/\r\n    public static void setPlayerID(final String givenID) {\r\n        playerID = givenID;\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Project/Player.java b/src/Project/Player.java
+--- a/src/Project/Player.java	(revision 798de22ae216a265132dd2d0d5e24798ab80f0cb)
++++ b/src/Project/Player.java	(date 1670631540385)
+@@ -1,5 +1,7 @@
+ package project;
+ 
++import java.util.ArrayList;
++
+ class Player {
+     /**Unique ID given to each player.**/
+     private static String playerID;
+@@ -20,4 +22,9 @@
+         playerID = givenID;
+     }
+ 
++    public static ArrayList<String> getPlayerNames() {
++        ArrayList<String> Players = new ArrayList<String>();
++        Players.add(getPlayerID());
++        return Players;
++    }
+ }
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"JavadocGenerationManager\">\r\n    <option name=\"OUTPUT_DIRECTORY\" value=\"$USER_HOME$/Desktop/Fall 2022/CIS 350/Go Fish Project\" />\r\n    <option name=\"OPTION_DOCUMENT_TAG_AUTHOR\" value=\"true\" />\r\n    <option name=\"OPTION_INCLUDE_LIBS\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PDMPlugin\">\r\n    <option name=\"skipTestSources\" value=\"false\" />\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" project-jdk-name=\"openjdk-19\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 798de22ae216a265132dd2d0d5e24798ab80f0cb)
++++ b/.idea/misc.xml	(date 1670632938718)
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="JavadocGenerationManager">
+-    <option name="OUTPUT_DIRECTORY" value="$USER_HOME$/Desktop/Fall 2022/CIS 350/Go Fish Project" />
++    <option name="OUTPUT_DIRECTORY" value="$USER_HOME$/Desktop/Fall 2022/CIS 350/Go Fish Project/JavaDocs" />
+     <option name="OPTION_DOCUMENT_TAG_AUTHOR" value="true" />
+     <option name="OPTION_INCLUDE_LIBS" value="true" />
+   </component>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"3dc63d7a-9b14-4aca-8930-b64e4cbcf0a7\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/project/UnitTest.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/project/UnitTest.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n        <option value=\"package-info\" />\r\n        <option value=\"JUnit5 Test Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2HMKxWznkDNTBXOddeinx5m3mGj\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,\r\n    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,\r\n    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,\r\n    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,\r\n    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,\r\n    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dmers/Documents/GitHub/Go-Fish&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Dmers\\Documents\\GitHub\\Go-Fish\" />\r\n    </key>\r\n    <key name=\"CreateTestDialog.Recents.Supers\">\r\n      <recent name=\"\" />\r\n    </key>\r\n    <key name=\"CreateTestDialog.RecentsKey\">\r\n      <recent name=\"project\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"JUnit.UnitTest.testEndGameSet\">\r\n    <configuration name=\"StartGame\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"project.StartGame\" />\r\n      <module name=\"Go-Fish\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"project.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"UnitTest.testEndGameSet\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Go-Fish\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"project.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"project\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"project.UnitTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"testEndGameSet\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"UnitTest.testGame\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Go-Fish\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"project.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"project\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"project.UnitTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"testGame\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"UnitTest.testMaxCardsInHand\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Go-Fish\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"project.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"project\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"project.UnitTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"testMaxCardsInHand\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"UnitTest.testPlayerStatic\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Go-Fish\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"project.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"project\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"project.UnitTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"testPlayerStatic\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JUnit.UnitTest.testEndGameSet\" />\r\n        <item itemvalue=\"Application.StartGame\" />\r\n        <item itemvalue=\"JUnit.UnitTest.testGame\" />\r\n        <item itemvalue=\"JUnit.UnitTest.testMaxCardsInHand\" />\r\n        <item itemvalue=\"JUnit.UnitTest.testPlayerStatic\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"3dc63d7a-9b14-4aca-8930-b64e4cbcf0a7\" name=\"Changes\" comment=\"\" />\r\n      <created>1668089758600</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1668089758600</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.util.InputMismatchException\" package=\"java.util\" />\r\n          <option name=\"timeStamp\" value=\"3\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 798de22ae216a265132dd2d0d5e24798ab80f0cb)
++++ b/.idea/workspace.xml	(date 1670632877196)
+@@ -3,7 +3,7 @@
+   <component name="ChangeListManager">
+     <list default="true" id="3dc63d7a-9b14-4aca-8930-b64e4cbcf0a7" name="Changes" comment="">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/project/UnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/UnitTest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/project/GoFish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/GoFish.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -63,7 +63,7 @@
+       <recent name="project" />
+     </key>
+   </component>
+-  <component name="RunManager" selected="JUnit.UnitTest.testEndGameSet">
++  <component name="RunManager" selected="Application.StartGame">
+     <configuration name="StartGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="project.StartGame" />
+       <module name="Go-Fish" />
+@@ -143,8 +143,8 @@
+     </configuration>
+     <recent_temporary>
+       <list>
+-        <item itemvalue="JUnit.UnitTest.testEndGameSet" />
+         <item itemvalue="Application.StartGame" />
++        <item itemvalue="JUnit.UnitTest.testEndGameSet" />
+         <item itemvalue="JUnit.UnitTest.testGame" />
+         <item itemvalue="JUnit.UnitTest.testMaxCardsInHand" />
+         <item itemvalue="JUnit.UnitTest.testPlayerStatic" />
+@@ -180,6 +180,15 @@
+           <properties class="java.util.InputMismatchException" package="java.util" />
+           <option name="timeStamp" value="3" />
+         </breakpoint>
++        <line-breakpoint enabled="true" type="java-method">
++          <url>file://$PROJECT_DIR$/src/project/GoFish.java</url>
++          <line>69</line>
++          <properties class="project.GoFish" method="createHands">
++            <option name="EMULATED" value="true" />
++            <option name="WATCH_EXIT" value="false" />
++          </properties>
++          <option name="timeStamp" value="8" />
++        </line-breakpoint>
+       </breakpoints>
+     </breakpoint-manager>
+   </component>

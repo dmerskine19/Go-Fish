@@ -2,8 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3dc63d7a-9b14-4aca-8930-b64e4cbcf0a7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project/UnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/UnitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go-Fish/Project/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go-Fish/Project/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go-Fish/Project/GoFish.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go-Fish/Project/GoFish.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go-Fish/Project/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go-Fish/Project/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go-Fish/Project/StartGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go-Fish/Project/StartGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Project/GoFish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Project/GoFish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Project/Newplayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Project/Newplayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Project/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Project/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Project/StartGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Project/StartGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/CardGoFish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/CardGoFish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/GoFishHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/GoFishHand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/GroupOfCards.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/GroupOfCards.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/NewGroupOfCards.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/NewGroupOfCards.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/SetOfCards.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/SetOfCards.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/package-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +79,7 @@
       <recent name="project" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UnitTest.testEndGameSet">
+  <component name="RunManager" selected="Application.StartGame">
     <configuration name="StartGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="project.StartGame" />
       <module name="Go-Fish" />
@@ -143,8 +159,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UnitTest.testEndGameSet" />
         <item itemvalue="Application.StartGame" />
+        <item itemvalue="JUnit.UnitTest.testEndGameSet" />
         <item itemvalue="JUnit.UnitTest.testGame" />
         <item itemvalue="JUnit.UnitTest.testMaxCardsInHand" />
         <item itemvalue="JUnit.UnitTest.testPlayerStatic" />
@@ -180,6 +196,15 @@
           <properties class="java.util.InputMismatchException" package="java.util" />
           <option name="timeStamp" value="3" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/project/GoFish.java</url>
+          <line>39</line>
+          <properties class="project.GoFish" method="createHands">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

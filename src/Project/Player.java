@@ -1,3 +1,5 @@
+package project;
+
 class Player {
     /**Unique ID given to each player.**/
     private static String playerID;
@@ -8,13 +10,13 @@ class Player {
         playerID = name;
     }
     /**@return player name as a string.**/
-    private static String getPlayerID() {
+    public static String getPlayerID() {
         return playerID;
     }
     /**Sets each player's ID to the given ID.
      * @param givenID - User inputted name
      **/
-    private static void setPlayerID(final String givenID) {
+    public static void setPlayerID(final String givenID) {
         playerID = givenID;
     }
 
