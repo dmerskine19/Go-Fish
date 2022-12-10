@@ -29,6 +29,10 @@ public class GoFish extends Game {
     public void addPlayers() {
         setPlayers();
     }
+
+    private void setPlayers() {
+    }
+
     /**Setter for the user inputted number of player.
      * @param numPlayer - user inputted value for the amount of players
      **/
@@ -258,6 +262,10 @@ public class GoFish extends Game {
         if(val == 0){
             try{
                 val = scanner.nextInt();
+                if(val > 13 || val < 0){
+                    System.out.println("enter a number between 1-13");
+                    val = scanner.nextInt();
+                }
                 System.out.println(val);
             }
             catch (InputMismatchException ex){

@@ -8,7 +8,8 @@ public abstract class Card {
     /**  @return to string to get the value**/
     public String getSuit() {
         return suit;
-    } /***
+    }
+    /***
      * @param suit
      */
     public void setSuit(String suit) {
