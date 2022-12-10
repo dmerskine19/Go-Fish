@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > NewGroupOfCards</title>
+  <title>Coverage Report > GroupOfCards</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -21,7 +21,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">project</a>
 </div>
 
-<h1>Coverage Summary for Class: NewGroupOfCards (project)</h1>
+<h1>Coverage Summary for Class: GroupOfCards (project)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -40,7 +40,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">NewGroupOfCards</td>
+  <td class="name">GroupOfCards</td>
 <td class="coverageStat">
   <span class="percent">
     100%
@@ -51,18 +51,18 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    50%
   </span>
   <span class="absValue">
-    (3/3)
+    (2/4)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    60%
   </span>
   <span class="absValue">
-    (8/8)
+    (3/5)
   </span>
 </td>
 </tr>
@@ -74,34 +74,38 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;
-&nbsp;package project;
+<code class="sourceCode" id="sourceCode">&nbsp;package project;
 &nbsp;
 &nbsp;import java.util.ArrayList;
+&nbsp;import java.util.Collections;
 &nbsp;
-&nbsp;public class NewGroupOfCards extends GroupOfCards {
-&nbsp;    /** ArrayList containing new cards being added to the deck. **/
-<b class="fc">&nbsp;    private final ArrayList&lt;Card&gt; cardsNew = new ArrayList&lt;&gt;();</b>
-&nbsp;    /** Function to define the size of a group of cards.
-&nbsp;     * @param size - Max size of the new group of cards
-&nbsp;     * **/
-&nbsp;    public NewGroupOfCards(final int size) {
-<b class="fc">&nbsp;        super(size);</b>
+&nbsp;
+&nbsp;public class GroupOfCards {
+&nbsp;    /** ArrayList for Cards.**/
+&nbsp;    private ArrayList&lt;Card&gt; cards;
+&nbsp;    /** Value of the size of the Group of cards.**/
+&nbsp;    private final int size;
+&nbsp;    /** Sets the specified size for each of the players hands.
+&nbsp;     * @param givenSize - Defines the size of the players starting hand
+&nbsp;     **/
+<b class="fc">&nbsp;    public GroupOfCards(final int givenSize) {</b>
+<b class="fc">&nbsp;        size = givenSize;</b>
 &nbsp;    }
-&nbsp;    /** calls set cards to shuffle cards, randomizing the set.**/
+&nbsp;    /** Randomizes the order of the cards.**/
 &nbsp;    public void shuffle() {
-<b class="fc">&nbsp;        super.setCards(cardsNew);</b>
+<b class="nc">&nbsp;        Collections.shuffle(cards);</b>
 &nbsp;    }
-&nbsp;
-&nbsp;    /** @return the set of newly generated cards.**/
-&nbsp;    public ArrayList&lt;Card&gt; generateCards() {
-<b class="fc">&nbsp;        for (CardGoFish.Suits s: CardGoFish.Suits.values()) {</b>
-<b class="fc">&nbsp;            for (CardGoFish.Values v : CardGoFish.Values.values()) {</b>
-<b class="fc">&nbsp;            CardGoFish card = new CardGoFish(s, v);</b>
-<b class="fc">&nbsp;                cardsNew.add(card);</b>
-&nbsp;            }
-&nbsp;        }
-<b class="fc">&nbsp;        return cardsNew;</b>
+&nbsp;    /** Getter for a specified size.
+&nbsp;     * @return - size
+&nbsp;     **/
+&nbsp;    public int getSize() {
+<b class="fc">&nbsp;        return size;</b>
+&nbsp;    }
+&nbsp;    /** Setter for each card to a specific cards with a value and face.
+&nbsp;     * @param cards - individual value and suit for the cards in the array list
+&nbsp;     **/
+&nbsp;    public void setCards(final ArrayList&lt;Card&gt; cards) {
+<b class="nc">&nbsp;        this.cards = cards;</b>
 &nbsp;    }
 &nbsp;}
 </code>
@@ -127,7 +131,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-12-06 12:32</div>
+    <div style="float:right;">generated on 2022-12-09 21:03</div>
 </div>
 </body>
 </html>

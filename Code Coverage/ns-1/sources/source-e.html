@@ -1,0 +1,204 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SetOfCardsTest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">project</a>
+</div>
+
+<h1>Coverage Summary for Class: SetOfCardsTest (project)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SetOfCardsTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/50)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package project;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import static org.junit.Assert.assertEquals;
+&nbsp;import static org.junit.Assert.fail;
+&nbsp;import org.junit.Test;
+&nbsp;import project.CardGoFish.Suits;
+&nbsp;import project.CardGoFish.Values;
+&nbsp;
+&nbsp;
+&nbsp;public class SetOfCardsTest {
+&nbsp;
+<b class="nc">&nbsp;    public SetOfCardsTest() {</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Test of addBookCount method, of class BookOfCards.
+&nbsp;     */
+&nbsp;    @Test
+&nbsp;    public void testAddSetCountGood() {
+<b class="nc">&nbsp;        System.out.println(&quot;addBookCount&quot;);</b>
+<b class="nc">&nbsp;        SetOfCards instance = new SetOfCards();</b>
+<b class="nc">&nbsp;        instance.addSetCount();</b>
+<b class="nc">&nbsp;        int expResult = 1;</b>
+<b class="nc">&nbsp;        int result = instance.countSet();</b>
+<b class="nc">&nbsp;        assertEquals(expResult, result);</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Test of countBook method, of class BookOfCards.
+&nbsp;     */
+&nbsp;    @Test
+&nbsp;    public void testCountSetGood() {
+<b class="nc">&nbsp;        System.out.println(&quot;countBook&quot;);</b>
+<b class="nc">&nbsp;        SetOfCards instance = new SetOfCards();</b>
+<b class="nc">&nbsp;        int expResult = 0;</b>
+<b class="nc">&nbsp;        int result = instance.countSet();</b>
+<b class="nc">&nbsp;        assertEquals(expResult, result);</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Test of checkIfBookInHand method, of class BookOfCards.
+&nbsp;     */
+&nbsp;    @Test
+&nbsp;    public void testCheckIfSetInHandGood() {
+<b class="nc">&nbsp;        System.out.println(&quot;checkIfBookInHand&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        CardGoFish c1 = new CardGoFish(Suits.Hearts, Values.Two);</b>
+<b class="nc">&nbsp;        CardGoFish c2 = new CardGoFish(Suits.Diamonds, Values.Two);</b>
+<b class="nc">&nbsp;        CardGoFish c3 = new CardGoFish(Suits.Spades, Values.Two);</b>
+<b class="nc">&nbsp;        CardGoFish c4 = new CardGoFish(Suits.Clubs, Values.Two);</b>
+<b class="nc">&nbsp;        CardGoFish c5 = new CardGoFish(Suits.Clubs, Values.King);</b>
+<b class="nc">&nbsp;        CardGoFish c6 = new CardGoFish(Suits.Clubs, Values.Six);</b>
+<b class="nc">&nbsp;        CardGoFish c7 = new CardGoFish(Suits.Clubs, Values.Eight);</b>
+&nbsp;
+<b class="nc">&nbsp;        ArrayList&lt;Card&gt; currentHand = new ArrayList&lt;Card&gt;();</b>
+<b class="nc">&nbsp;        currentHand.add(c1);</b>
+<b class="nc">&nbsp;        currentHand.add(c2);</b>
+<b class="nc">&nbsp;        currentHand.add(c3);</b>
+<b class="nc">&nbsp;        currentHand.add(c4);</b>
+<b class="nc">&nbsp;        currentHand.add(c5);</b>
+<b class="nc">&nbsp;        currentHand.add(c6);</b>
+<b class="nc">&nbsp;        currentHand.add(c7);</b>
+&nbsp;
+<b class="nc">&nbsp;        boolean expResult = true;</b>
+<b class="nc">&nbsp;        boolean result = SetOfCards.checkIfSetInHand(currentHand);</b>
+<b class="nc">&nbsp;        assertEquals(expResult, result);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testCheckIfSetInHandBad() {
+<b class="nc">&nbsp;        System.out.println(&quot;checkIfBookInHand&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        CardGoFish c1 = new CardGoFish(Suits.Hearts, Values.Two);</b>
+<b class="nc">&nbsp;        CardGoFish c2 = new CardGoFish(Suits.Diamonds, Values.Two);</b>
+<b class="nc">&nbsp;        CardGoFish c3 = new CardGoFish(Suits.Spades, Values.Three);</b>
+<b class="nc">&nbsp;        CardGoFish c4 = new CardGoFish(Suits.Clubs, Values.Two);</b>
+<b class="nc">&nbsp;        CardGoFish c5 = new CardGoFish(Suits.Clubs, Values.King);</b>
+<b class="nc">&nbsp;        CardGoFish c6 = new CardGoFish(Suits.Clubs, Values.Six);</b>
+<b class="nc">&nbsp;        CardGoFish c7 = new CardGoFish(Suits.Clubs, Values.Eight);</b>
+&nbsp;
+<b class="nc">&nbsp;        ArrayList&lt;Card&gt; currentHand = new ArrayList&lt;Card&gt;();</b>
+<b class="nc">&nbsp;        currentHand.add(c1);</b>
+<b class="nc">&nbsp;        currentHand.add(c2);</b>
+<b class="nc">&nbsp;        currentHand.add(c3);</b>
+<b class="nc">&nbsp;        currentHand.add(c4);</b>
+<b class="nc">&nbsp;        currentHand.add(c5);</b>
+<b class="nc">&nbsp;        currentHand.add(c6);</b>
+<b class="nc">&nbsp;        currentHand.add(c7);</b>
+&nbsp;
+<b class="nc">&nbsp;        boolean expResult = false;</b>
+<b class="nc">&nbsp;        boolean result = SetOfCards.checkIfSetInHand(currentHand);</b>
+<b class="nc">&nbsp;        assertEquals(expResult, result);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-09 21:03</div>
+</div>
+</body>
+</html>

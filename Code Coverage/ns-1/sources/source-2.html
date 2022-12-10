@@ -119,16 +119,14 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;
-&nbsp;package project;
+<code class="sourceCode" id="sourceCode">&nbsp;package project;
 &nbsp;
 &nbsp;import org.jetbrains.annotations.NotNull;
-&nbsp;
 &nbsp;import java.util.Arrays;
 &nbsp;
 &nbsp;public class CardGoFish extends Card {
+&nbsp;    /** go fish value .**/
 <b class="fc">&nbsp;    public CardGoFish() {</b>
-&nbsp;
 &nbsp;    }
 &nbsp;
 <b class="fc">&nbsp;    public enum Values {</b>
@@ -183,7 +181,8 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="fc">&nbsp;    public CardGoFish(final @NotNull Suits s, final @NotNull Values v) {</b>
 <b class="fc">&nbsp;        super.setSuit(s.toString());</b>
 <b class="fc">&nbsp;        super.setValue(v.ordinal() + 1);</b>
-&nbsp;    }
+&nbsp;
+&nbsp;}
 &nbsp;}
 </code>
 </pre>
@@ -208,7 +207,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-12-06 12:32</div>
+    <div style="float:right;">generated on 2022-12-09 21:03</div>
 </div>
 </body>
 </html>

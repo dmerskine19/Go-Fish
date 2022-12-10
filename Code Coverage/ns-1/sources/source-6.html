@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > GroupOfCards</title>
+  <title>Coverage Report > GoFishHandTest</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -21,7 +21,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">project</a>
 </div>
 
-<h1>Coverage Summary for Class: GroupOfCards (project)</h1>
+<h1>Coverage Summary for Class: GoFishHandTest (project)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -40,29 +40,29 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">GroupOfCards</td>
+  <td class="name">GoFishHandTest</td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    0%
   </span>
   <span class="absValue">
-    (1/1)
+    (0/1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    75%
+    0%
   </span>
   <span class="absValue">
-    (3/4)
+    (0/5)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    80%
+    0%
   </span>
   <span class="absValue">
-    (4/5)
+    (0/39)
   </span>
 </td>
 </tr>
@@ -74,38 +74,95 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package project;
+<code class="sourceCode" id="sourceCode">&nbsp;
+&nbsp;package project;
+&nbsp;
 &nbsp;import java.util.ArrayList;
-&nbsp;import java.util.Collections;
+&nbsp;import org.junit.Before;
+&nbsp;import org.junit.Test;
+&nbsp;import static org.junit.Assert.*;
+&nbsp;
+&nbsp;public class GoFishHandTest {
+&nbsp;
+<b class="nc">&nbsp;    public GoFishHandTest() {</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Before
+&nbsp;    public void setUp() {
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Test of generateHand method, of class GoFishHand.
+&nbsp;     */
+&nbsp;    @Test
+&nbsp;    public void testGenerateHandGood() {
+<b class="nc">&nbsp;        System.out.println(&quot;generateHand&quot;);</b>
+<b class="nc">&nbsp;        GoFishHand instance = new GoFishHand(7);</b>
+<b class="nc">&nbsp;        boolean expResult = true;</b>
+<b class="nc">&nbsp;        boolean result = false;</b>
+&nbsp;
+<b class="nc">&nbsp;        NewGroupOfCards newGrp = new NewGroupOfCards(52);</b>
+<b class="nc">&nbsp;        ArrayList&lt;Card&gt; cardHandTemp = newGrp.generateCards();</b>
+&nbsp;
+<b class="nc">&nbsp;        ArrayList&lt;Card&gt; ret = instance.generateHand(cardHandTemp);</b>
+<b class="nc">&nbsp;        if (ret.size() == 7)</b>
+<b class="nc">&nbsp;            result = true;</b>
+&nbsp;        else
+<b class="nc">&nbsp;            result = false;</b>
+&nbsp;
+<b class="nc">&nbsp;        assertEquals(expResult, result);</b>
+&nbsp;
+&nbsp;    }
 &nbsp;
 &nbsp;
-&nbsp;public class GroupOfCards {
-&nbsp;    /** ArrayList for Cards.**/
-&nbsp;    private ArrayList&lt;Card&gt; cards;
-&nbsp;    /** Value of the size of the Group of cards.**/
-&nbsp;    private final int size;
-&nbsp;    /** Sets the specified size for each of the players hands.
-&nbsp;     * @param givenSize - Defines the size of the players starting hand
-&nbsp;     **/
-<b class="fc">&nbsp;    public GroupOfCards(final int givenSize) {</b>
-<b class="fc">&nbsp;        size = givenSize;</b>
+&nbsp;    @Test
+&nbsp;    public void testGenerateHandBad() {
+<b class="nc">&nbsp;        System.out.println(&quot;generateHand&quot;);</b>
+<b class="nc">&nbsp;        GoFishHand instance = new GoFishHand(20);</b>
+<b class="nc">&nbsp;        boolean expResult = false;</b>
+<b class="nc">&nbsp;        boolean result = false;</b>
+&nbsp;
+<b class="nc">&nbsp;        NewGroupOfCards newGrp = new NewGroupOfCards(52);</b>
+<b class="nc">&nbsp;        ArrayList&lt;Card&gt; cardHandTemp = newGrp.generateCards();</b>
+&nbsp;
+<b class="nc">&nbsp;        ArrayList&lt;Card&gt; ret = instance.generateHand(cardHandTemp);</b>
+<b class="nc">&nbsp;        if (ret.size() == 7)</b>
+<b class="nc">&nbsp;            result = true;</b>
+&nbsp;        else
+<b class="nc">&nbsp;            result = false;</b>
+&nbsp;
+<b class="nc">&nbsp;        assertEquals(expResult, result);</b>
+&nbsp;
 &nbsp;    }
-&nbsp;    /** Randomizes the order of the cards.**/
-&nbsp;    public void shuffle() {
-<b class="nc">&nbsp;        Collections.shuffle(cards);</b>
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Test of selectRandomCardFromHand method, of class GoFishHand.
+&nbsp;     */
+&nbsp;    @Test
+&nbsp;    public void testSelectRandomCardFromHandGood() {
+<b class="nc">&nbsp;        System.out.println(&quot;selectRandomCardFromHand&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        CardGoFish c1 = new CardGoFish(CardGoFish.Suits.Clubs, CardGoFish.Values.King);</b>
+<b class="nc">&nbsp;        CardGoFish c2 = new CardGoFish(CardGoFish.Suits.Clubs, CardGoFish.Values.Six);</b>
+<b class="nc">&nbsp;        CardGoFish c3 = new CardGoFish(CardGoFish.Suits.Clubs, CardGoFish.Values.Eight);</b>
+&nbsp;
+<b class="nc">&nbsp;        ArrayList&lt;Card&gt; currentPlayerHand = new ArrayList&lt;Card&gt;();</b>
+<b class="nc">&nbsp;        currentPlayerHand.add(c1);</b>
+<b class="nc">&nbsp;        currentPlayerHand.add(c2);</b>
+<b class="nc">&nbsp;        currentPlayerHand.add(c3);</b>
+&nbsp;
+<b class="nc">&nbsp;        boolean expResult = true;</b>
+<b class="nc">&nbsp;        boolean result = false;</b>
+<b class="nc">&nbsp;        Card ret = GoFishHand.rdmCardFromHand(currentPlayerHand);</b>
+<b class="nc">&nbsp;        if (ret.equals(c1) || ret.equals(c2) || ret.equals(c3))</b>
+<b class="nc">&nbsp;            result = true;</b>
+&nbsp;        else
+<b class="nc">&nbsp;            result = false;</b>
+<b class="nc">&nbsp;        assertEquals(expResult, result);</b>
+&nbsp;
 &nbsp;    }
-&nbsp;    /** Getter for a specified size.
-&nbsp;     * @return - size
-&nbsp;     **/
-&nbsp;    public int getSize() {
-<b class="fc">&nbsp;        return size;</b>
-&nbsp;    }
-&nbsp;    /** Setter for each card to a specific cards with a value and face.
-&nbsp;     * @param cards - individual value and suit for the cards in the array list
-&nbsp;     **/
-&nbsp;    public void setCards(final ArrayList&lt;Card&gt; cards) {
-<b class="fc">&nbsp;        this.cards = cards;</b>
-&nbsp;    }
+&nbsp;
 &nbsp;}
 </code>
 </pre>
@@ -130,7 +187,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-12-06 12:32</div>
+    <div style="float:right;">generated on 2022-12-09 21:03</div>
 </div>
 </body>
 </html>

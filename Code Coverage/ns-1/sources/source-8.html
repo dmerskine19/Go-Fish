@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > NewPlayer</title>
+  <title>Coverage Report > NewGroupOfCards</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -21,7 +21,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">project</a>
 </div>
 
-<h1>Coverage Summary for Class: NewPlayer (project)</h1>
+<h1>Coverage Summary for Class: NewGroupOfCards (project)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -40,7 +40,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">NewPlayer</td>
+  <td class="name">NewGroupOfCards</td>
 <td class="coverageStat">
   <span class="percent">
     100%
@@ -51,18 +51,18 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    66.7%
   </span>
   <span class="absValue">
-    (1/1)
+    (2/3)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    87.5%
   </span>
   <span class="absValue">
-    (2/2)
+    (7/8)
   </span>
 </td>
 </tr>
@@ -76,14 +76,32 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <code class="sourceCode" id="sourceCode">&nbsp;package project;
 &nbsp;
-&nbsp;public class NewPlayer extends Player {
-&nbsp;/**Sets New Players name, creating an ID.
-&nbsp;* @param name - User specified name
-&nbsp;**/
-&nbsp;public NewPlayer(final String name) {
-<b class="fc">&nbsp;super(name);</b>
-<b class="fc">&nbsp;Player.setPlayerID(name);</b>
-&nbsp;}
+&nbsp;import java.util.ArrayList;
+&nbsp;
+&nbsp;public class NewGroupOfCards extends GroupOfCards {
+&nbsp;    /** ArrayList containing new cards being added to the deck. **/
+<b class="fc">&nbsp;    private final ArrayList&lt;Card&gt; cardsNew = new ArrayList&lt;&gt;();</b>
+&nbsp;    /** Function to define the size of a group of cards.
+&nbsp;     * @param size - Max size of the new group of cards
+&nbsp;     * **/
+&nbsp;    public NewGroupOfCards(final int size) {
+<b class="fc">&nbsp;        super(size);</b>
+&nbsp;    }
+&nbsp;    /** calls set cards to shuffle cards, randomizing the set.**/
+&nbsp;    public void shuffle() {
+<b class="nc">&nbsp;        super.setCards(cardsNew);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /** @return the set of newly generated cards.**/
+&nbsp;    public ArrayList&lt;Card&gt; generateCards() {
+<b class="fc">&nbsp;        for (CardGoFish.Suits s: CardGoFish.Suits.values()) {</b>
+<b class="fc">&nbsp;            for (CardGoFish.Values v : CardGoFish.Values.values()) {</b>
+<b class="fc">&nbsp;            CardGoFish card = new CardGoFish(s, v);</b>
+<b class="fc">&nbsp;                cardsNew.add(card);</b>
+&nbsp;            }
+&nbsp;        }
+<b class="fc">&nbsp;        return cardsNew;</b>
+&nbsp;    }
 &nbsp;}
 </code>
 </pre>
@@ -108,7 +126,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-12-06 12:32</div>
+    <div style="float:right;">generated on 2022-12-09 21:03</div>
 </div>
 </body>
 </html>

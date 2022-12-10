@@ -51,18 +51,18 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    60%
+    80%
   </span>
   <span class="absValue">
-    (3/5)
+    (4/5)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    66.7%
+    87.5%
   </span>
   <span class="absValue">
-    (4/6)
+    (7/8)
   </span>
 </td>
 </tr>
@@ -76,38 +76,38 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <code class="sourceCode" id="sourceCode">&nbsp;package project;
 &nbsp;
-&nbsp;import java.util.Arrays;
-&nbsp;
-<b class="fc">&nbsp;public abstract class Card</b>
-&nbsp;{
-&nbsp;   private String suit;
-&nbsp;   private int value;
-&nbsp;    
-&nbsp;
+<b class="fc">&nbsp;public abstract class Card {</b>
+&nbsp;    /** this value will be use. **/
+&nbsp;    private String suit;
+&nbsp;    /** to get the value in suit.**/
+&nbsp;    private int value;
+&nbsp;    /**  @return to string to get the value**/
 &nbsp;    public String getSuit() {
 <b class="nc">&nbsp;        return suit;</b>
 &nbsp;    }
-&nbsp;
-&nbsp;    public void setSuit(String suit) {
-&nbsp;        
+&nbsp;    /***
+&nbsp;     * @param suit
+&nbsp;     */
+<b class="fc">&nbsp;    public void setSuit(String suit) {</b>
 <b class="fc">&nbsp;        CardGoFish card = new CardGoFish();</b>
 <b class="fc">&nbsp;        this.suit = suit;</b>
-&nbsp;        // System.out.println(this.suit);
+&nbsp;         System.out.println(this.suit);
 &nbsp;    }
-&nbsp;
-&nbsp;    public int getValue() {
-<b class="nc">&nbsp;        return value;</b>
-&nbsp;    }
-&nbsp;
-&nbsp;    public void setValue(int value) {
+&nbsp;    /**  @return to int to get the value**/
+<b class="fc">&nbsp;    public int getValue() {</b>
+&nbsp;        return value;
+&nbsp;    } /***
+&nbsp;     * @param value
+&nbsp;     */
+<b class="fc">&nbsp;    public void setValue(int value) {</b>
 <b class="fc">&nbsp;        this.value = value;</b>
-&nbsp;        // System.out.println(this.value);
+&nbsp;         System.out.println(this.value);
 &nbsp;    }
-&nbsp;    
 &nbsp;    @Override
 &nbsp;    public abstract String toString();
-&nbsp;    
+&nbsp;
 &nbsp;}
+&nbsp;
 </code>
 </pre>
 </div>
@@ -131,7 +131,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-12-06 12:32</div>
+    <div style="float:right;">generated on 2022-12-09 21:03</div>
 </div>
 </body>
 </html>

@@ -43,26 +43,26 @@ Current scope:     <a href="../../index.html">all classes</a>
   <td class="name">GoFishHand</td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    0%
   </span>
   <span class="absValue">
-    (1/1)
+    (0/1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    75%
+    0%
   </span>
   <span class="absValue">
-    (3/4)
+    (0/4)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    83.3%
+    0%
   </span>
   <span class="absValue">
-    (10/12)
+    (0/12)
   </span>
 </td>
 </tr>
@@ -74,8 +74,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;
-&nbsp;package project;
+<code class="sourceCode" id="sourceCode">&nbsp;package project;
 &nbsp;
 &nbsp;import java.util.ArrayList;
 &nbsp;import java.util.Random;
@@ -85,31 +84,29 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;     * @param givenSize - number of cards in their hand
 &nbsp;     **/
 &nbsp;    public GoFishHand(final int givenSize) {
-<b class="fc">&nbsp;        super(givenSize);</b>
+<b class="nc">&nbsp;        super(givenSize);</b>
 &nbsp;    }
 &nbsp;    /** To create a hand of 7 cards.
 &nbsp;     * @return cardHand - The cards in a players current hand.
 &nbsp;     * @param cardHandTemp - Temp array to build the players hand
 &nbsp;     **/
 &nbsp;    public ArrayList&lt;Card&gt; generateHand(final ArrayList&lt;Card&gt; cardHandTemp) {
-<b class="fc">&nbsp;        ArrayList&lt;Card&gt; cardHand = new ArrayList&lt;&gt;();</b>
-<b class="fc">&nbsp;        for (int i = 0; i &lt; this.getSize(); i++) {</b>
-<b class="fc">&nbsp;            int rdmCard = generateRandomNumber(cardHandTemp.size());</b>
-<b class="fc">&nbsp;            Card card = cardHandTemp.get(rdmCard);</b>
-<b class="fc">&nbsp;            cardHandTemp.remove(card);</b>
-<b class="fc">&nbsp;            cardHand.add(card);</b>
+<b class="nc">&nbsp;        ArrayList&lt;Card&gt; cardHand = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;        for (int i = 0; i &lt; this.getSize(); i++) {</b>
+<b class="nc">&nbsp;            int rdmCard = generateRandomNumber(cardHandTemp.size());</b>
+<b class="nc">&nbsp;            Card card = cardHandTemp.get(rdmCard);</b>
+<b class="nc">&nbsp;            cardHandTemp.remove(card);</b>
+<b class="nc">&nbsp;            cardHand.add(card);</b>
 &nbsp;        }
-<b class="fc">&nbsp;        return cardHand;</b>
+<b class="nc">&nbsp;        return cardHand;</b>
 &nbsp;    }
-&nbsp;
-&nbsp;
 &nbsp;    /** Used to create random numbers.
 &nbsp;     * @return rdm - A random number.
 &nbsp;     * @param maxVal - The max value of the random number being generated
 &nbsp;     **/
 &nbsp;    public static int generateRandomNumber(final int maxVal) {
-<b class="fc">&nbsp;        Random rdm = new Random();</b>
-<b class="fc">&nbsp;        return rdm.nextInt(maxVal);</b>
+<b class="nc">&nbsp;        Random rdm = new Random();</b>
+<b class="nc">&nbsp;        return rdm.nextInt(maxVal);</b>
 &nbsp;    }
 &nbsp;
 &nbsp;    //method to select a card from the hand
@@ -146,7 +143,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-12-06 12:32</div>
+    <div style="float:right;">generated on 2022-12-09 21:03</div>
 </div>
 </body>
 </html>

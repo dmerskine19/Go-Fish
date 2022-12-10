@@ -1,0 +1,185 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SetOfCards</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">project</a>
+</div>
+
+<h1>Coverage Summary for Class: SetOfCards (project)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SetOfCards</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (4/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    48.5%
+  </span>
+  <span class="absValue">
+    (16/33)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package project;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;
+&nbsp;//this class is to track the books of card that are formed during game
+&nbsp;public class SetOfCards {
+&nbsp;    /** Value that represents the number of sets a player has made. **/
+&nbsp;    private int setCount;
+&nbsp;    /** Setter for the Value of sets a player has made. **/
+<b class="fc">&nbsp;    public SetOfCards() {</b>
+<b class="fc">&nbsp;        this.setCount = 0;</b>
+&nbsp;    }
+&nbsp;    /** This increments the number of sets a player has made. **/
+&nbsp;    public void addSetCount() {
+<b class="fc">&nbsp;        this.setCount += 1;</b>
+&nbsp;    }
+&nbsp;    /** @return setCount - the number of sets a player has made. **/
+&nbsp;    public int countSet() {
+<b class="fc">&nbsp;        return this.setCount;</b>
+&nbsp;    }
+&nbsp;    /** to check if a book of four is formed in the hand.
+&nbsp;     * @return a set if there is one present in the players hand
+&nbsp;     * @param currentHand - The Array of the players current hand
+&nbsp;     **/
+&nbsp;    public static boolean checkIfSetInHand(final ArrayList&lt;Card&gt; currentHand) {
+<b class="fc">&nbsp;        boolean setPresent = false;</b>
+<b class="fc">&nbsp;        int counter = 1;</b>
+<b class="fc">&nbsp;        final int sizeOfSet = 4;</b>
+<b class="fc">&nbsp;        for (int i = 0; i &lt; currentHand.size(); i++) {</b>
+&nbsp;
+<b class="fc">&nbsp;            for (int j = i + 1; j &lt; currentHand.size(); j++) {</b>
+&nbsp;
+<b class="fc">&nbsp;                if (currentHand.get(i).getValue() == currentHand.get(j).getValue()) {</b>
+<b class="fc">&nbsp;                    ++counter;</b>
+&nbsp;                    //System.out.println(&quot;Counter = &quot; + counter);
+&nbsp;                }
+&nbsp;
+<b class="fc">&nbsp;                if (counter == sizeOfSet) {</b>
+<b class="fc">&nbsp;                    setPresent = true;</b>
+<b class="fc">&nbsp;                    break;</b>
+&nbsp;                }
+&nbsp;            }
+<b class="fc">&nbsp;            counter = 1;</b>
+&nbsp;
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        return setPresent;</b>
+&nbsp;    }
+&nbsp;    /** to return the book of cards  if formed.
+&nbsp;     * @return checks if there is a set present in the players hand
+&nbsp;     * @param currentHand - The Array of the players current hand
+&nbsp;     **/
+&nbsp;    public static ArrayList&lt;Card&gt; findSetInHand(final ArrayList&lt;Card&gt; currentHand) {
+<b class="nc">&nbsp;        ArrayList&lt;Card&gt; set = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;        int counter = 1;</b>
+<b class="nc">&nbsp;        int foundPos = 0;</b>
+<b class="nc">&nbsp;        final int sizeOfSet = 4;</b>
+&nbsp;
+<b class="nc">&nbsp;        for (int i = 0; i &lt; currentHand.size(); i++) {</b>
+<b class="nc">&nbsp;            for (int j = i + 1; j &lt; currentHand.size(); j++) {</b>
+<b class="nc">&nbsp;                if (currentHand.get(i).getValue() == currentHand.get(j).getValue()) {</b>
+<b class="nc">&nbsp;                    ++counter;</b>
+&nbsp;                }
+&nbsp;
+<b class="nc">&nbsp;                if (counter == sizeOfSet) {</b>
+<b class="nc">&nbsp;                    foundPos = j;</b>
+<b class="nc">&nbsp;                    break;</b>
+&nbsp;                }
+&nbsp;            }
+<b class="nc">&nbsp;            counter = 1;</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        for (Card card : currentHand) {</b>
+<b class="nc">&nbsp;            if (card.getValue() == currentHand.get(foundPos).getValue()) {</b>
+<b class="nc">&nbsp;                set.add(card);</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+<b class="nc">&nbsp;        return set;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-09 21:03</div>
+</div>
+</body>
+</html>

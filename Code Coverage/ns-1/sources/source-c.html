@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > NewplayerTest</title>
+  <title>Coverage Report > PlayerTest</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -21,7 +21,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">project</a>
 </div>
 
-<h1>Coverage Summary for Class: NewplayerTest (project)</h1>
+<h1>Coverage Summary for Class: PlayerTest (project)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -40,7 +40,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">NewplayerTest</td>
+  <td class="name">PlayerTest</td>
 <td class="coverageStat">
   <span class="percent">
     0%
@@ -77,21 +77,17 @@ Current scope:     <a href="../../index.html">all classes</a>
 <code class="sourceCode" id="sourceCode">&nbsp;package project;
 &nbsp;
 &nbsp;import org.junit.jupiter.api.Test;
-&nbsp;import project.Player;
 &nbsp;
 &nbsp;import static org.junit.jupiter.api.Assertions.*;
 &nbsp;
-<b class="nc">&nbsp;class NewplayerTest {</b>
+<b class="nc">&nbsp;class PlayerTest {</b>
 &nbsp;    @Test
-&nbsp;    void TestNewplayer() {
-&nbsp;        //regular input
-&nbsp;
-<b class="nc">&nbsp;        Player s1 = new Player(&quot;HoangNguyen&quot;);</b>
+&nbsp;    public void testPLayer(){
+<b class="nc">&nbsp;        Player a = new Player( &quot;HoangNguyen&quot;);</b>
 <b class="nc">&nbsp;        assertArrayEquals(&quot;HoangNguyen&quot;.toCharArray(), Player.getPlayerID().toCharArray());</b>
-<b class="nc">&nbsp;        assertNotEquals(&quot;drew&quot;, Player.getPlayerID());</b>
+<b class="nc">&nbsp;        assertNotEquals(&quot;drew&quot;,Player.getPlayerID());</b>
 &nbsp;    }
 &nbsp;}
-&nbsp;
 </code>
 </pre>
 </div>
